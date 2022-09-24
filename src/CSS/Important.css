@@ -1,0 +1,79 @@
+.emptyError{
+    border: 3px solid red;
+}
+
+.Link{
+    color:inherit;
+    text-decoration: none;
+}
+
+.red{
+    color:red
+}
+
+.green{
+    color:green;
+    border: 1px solid white;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 5px;
+    position: absolute;
+    width: 100px;
+    background-color: black;
+    z-index: 100;
+    top:10px;
+    left: 35px;
+}
+.green:hover{
+    background-color: #ffb03b;
+    color:white;
+
+}
+
+.deleteContainer{
+    position: fixed;
+    backdrop-filter: blur(10px);
+    width: 100%;
+    height: 100vh;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.deleteWrapper{
+width: 100%;
+max-width: 300px;
+height: 200px;
+/* border: 1px solid red; */
+background-color: white;
+display: flex;
+align-items: center;
+justify-content: space-around;
+flex-direction: column;
+border-radius: 10px;
+}
+
+.deleteWrapper > div{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+
+}
+.deleteWrapper > div > span{
+    cursor: pointer;
+}
+.delete{
+    border: 1px solid red;
+    padding: 1px 15px;
+    background-color: red;
+    font-size: 19px;
+    color: white;
+    border-radius: 3px;
+    
+}
