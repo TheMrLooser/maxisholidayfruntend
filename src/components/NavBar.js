@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Account, Container, DropdownContainer, DropdownElement, Element, ElementWrapper, Logo, Wrapper } from '../styledComponents/NavBar'
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import ExpandCircleDownIcon from '@mui/icons-material/ExpandCircleDown';
 import axios from 'axios'
 
@@ -29,9 +29,11 @@ export const NavBar = () => {
         }
     }
 
+    const navigate = useNavigate()
     const LogOut = async()=>{
         await axios.get('https://maxis-holiday.herokuapp.com/client/logout')
-        window.location.reload(true)
+        navigate('/login')
+        // window.location.reload(true)
     }
 
     const [requests,setRequest] = useState(0);

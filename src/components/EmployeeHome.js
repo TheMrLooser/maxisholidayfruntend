@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
+import { Login } from '../pages/Login'
 import { Contaienr, Wrapper } from '../styledComponents/EmployeeHome'
 import { DownloadInvoice } from './DownloadInvoice'
 import { DueAmount } from './DueAmount'
@@ -29,6 +30,7 @@ export const EmployeeHome = () => {
                     <Route path='/send-email' element={<SendMail/>}/>
                     <Route path='/dueamount' element={<DueAmount/>}/>
                     <Route path='/statistics' element={<Statistics/>}/>
+                    <Route path='/login' element={<Login/>}/>
                 </Routes>
 
                 
