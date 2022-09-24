@@ -27,7 +27,6 @@ export const Home = () => {
         {
             loading ?<Login/> : currentUser?.data?.role==="Client" ? <ClientHome/> : (currentUser?.data?.role==="Employee" || currentUser?.data?.role==="Admin" )  ? <EmployeeHome/> : <Login/>
         }
-         {/* <Routes><Route path='/login' element={<Login/>}/></Routes> */}
        </Container>
        </BrowserRouter>
     </>

@@ -3,6 +3,7 @@ import { BodyWrapper, ElementWrapper, Heading, Title, Wrapper } from '../styledC
 import {Button , Input} from "../styledComponents/Login"
 import axios from 'axios';
 import { Status } from './Status'
+import Loader from '../loder/loder';
 
 
 export const RequestHoliday = ({currentUser}) => {
@@ -17,7 +18,9 @@ export const RequestHoliday = ({currentUser}) => {
     const [message,setMessage] = useState("")
     const [STATUS,setSTATUS] = useState("")
 
+    const [showLoader,setShoLoader] = useState(false)
     const SendRequest = async()=>{
+        setShoLoader(true)
        const res =  await axios.post('https://maxis-holiday.herokuapp.com/holidays/create-request',{
             name:currentUser.name,
             email:currentUser.email,
@@ -37,6 +40,8 @@ export const RequestHoliday = ({currentUser}) => {
 
         }
         setShowStatus(true)
+        setShoLoader(false)
+
 
     }
 
@@ -54,7 +59,7 @@ export const RequestHoliday = ({currentUser}) => {
                 <ElementWrapper><Title>No. Of Childs</Title><Input required placeholder='Enter No. of Childs' onChange={(e)=>setNoOfChilds(e.target.value)}/></ElementWrapper>
                 <ElementWrapper><Title>Remark</Title><Input placeholder='Enter Remark' onChange={(e)=>setRemark(e.target.value)}/></ElementWrapper>
             </BodyWrapper>
-            <Button   onClick={SendRequest}>Send Request</Button>
+            <Button   onClick={SendRequest}>{showLoader ? <Loader/> : "Send Request"}</Button>
         </Wrapper>
     </>
     )

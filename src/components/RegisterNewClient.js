@@ -6,6 +6,7 @@ import { BodyWrapper, ElementWrapper, Heading, Title } from '../styledComponents
 import { TextArea, Wrapper } from '../styledComponents/RegisterNewClient'
 import { Status_2 } from './Status'
 import styled from 'styled-components'
+import Loader from '../loder/loder'
 
 
 
@@ -58,9 +59,9 @@ export const RegisterNewClient = () => {
         const [STATUS,setSTATUS] = useState(false)
         const todaysDate = `${new Date().getDate()}-${new Date().getMonth()}-${new Date().getFullYear()}`
 
-
+        const [showLoader,setShoLoader] = useState(false)
         const register = async()=>{
-             
+                    setShoLoader(true)
                     const res = await axios.post('https://maxis-holiday.herokuapp.com/client/add-new-client',
                     {
                         name,email,gender,phone,address,netAmount,state,city,DOB,
@@ -80,6 +81,7 @@ export const RegisterNewClient = () => {
                         setSTATUS(true)
                     }
             
+                    setShoLoader(false)
                     
                 }
     
@@ -131,7 +133,7 @@ export const RegisterNewClient = () => {
                 </ElementWrapper>
                  
             </BodyWrapper>
-            <Button onClick={register}>Register</Button>
+            <Button onClick={register}>{showLoader ? <Loader/> : "Register"}</Button>
         </Wrapper>
     </>
   )

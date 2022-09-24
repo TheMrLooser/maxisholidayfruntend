@@ -1,10 +1,11 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+// import { useSelector } from 'react-redux'
+import Loader from '../loder/loder'
 import {Button , Input} from "../styledComponents/Login"
 import { BodyWrapper, ElementWrapper, Heading, Title } from '../styledComponents/MakeEntry'
 import { TextArea, Wrapper } from '../styledComponents/RegisterNewClient'
-import { Status, Status_2 } from './Status'
+import {  Status_2 } from './Status'
 
 
 
@@ -22,18 +23,15 @@ export const RegisterNewEmployee = () => {
         const [state,setState] = useState("")
         const [city,setCity] = useState("")
         const [DOB,setDOB] = useState("")
-       
         const [adharCardNumber,setAdharCardNumber] = useState(0)
-         
-
-        const {currentUser} = useSelector(state=>state.currentUser)
+        // const {currentUser} = useSelector(state=>state.currentUser)
         const [status,setStatus] = useState("");
         const [Message,setMeaasge] = useState(null);
         const [STATUS,setSTATUS] = useState(false)
 
-
+        const [showLoader,setShoLoader] = useState(false)
         const register = async()=>{
-             
+                    setShoLoader(true)
                     const res = await axios.post('https://maxis-holiday.herokuapp.com/employee/add-new-employee',
                     {
                         name,email,gender,phone,address,state,city,DOB,adharCardNumber 
@@ -49,6 +47,7 @@ export const RegisterNewEmployee = () => {
                         setSTATUS(true)
                     }
             
+                    setShoLoader(false)
                     
                 }
     
@@ -73,7 +72,7 @@ export const RegisterNewEmployee = () => {
                  
                  
             </BodyWrapper>
-            <Button onClick={register}>Register</Button>
+            <Button onClick={register}>{showLoader ? <Loader/> : "Register"}</Button>
         </Wrapper>
     </>
   )

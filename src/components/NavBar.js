@@ -29,10 +29,8 @@ export const NavBar = () => {
         }
     }
 
-    const navigate = useNavigate()
     const LogOut = async()=>{
         await axios.get('https://maxis-holiday.herokuapp.com/client/logout')
-        // navigate('/login')
         window.location.reload(true)
     }
 

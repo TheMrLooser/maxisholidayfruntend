@@ -8,12 +8,20 @@ import {BrowserRouter,Route,Routes,Link} from 'react-router-dom'
 import { HolidaysTaken } from './HolidaysTaken';
 import { RequestHoliday } from './RequestHoliday';
 import { DownloadInvoice } from './DownloadInvoice';
+import axios from 'axios';
 
 
 export const ClientHome = () => {
     const {loading, error,currentUser} = useSelector(state=>state.currentUser)
     const user = currentUser.data ? currentUser.data : null
     
+    // const navigate = useNavigate()
+    const LogOut = async()=>{
+      const res =   await axios.get('https://maxis-holiday.herokuapp.com/client/logout')
+        // navigate('/login')
+        console.log(res.data)
+        window.location.reload(true)
+    }
 
   return (
      <>
@@ -28,6 +36,7 @@ export const ClientHome = () => {
               <Link to={'/holidays-taken'} className="Link"> <NavElement>Holidays</NavElement></Link>
                <Link to={'/holiday-request'} className="Link"><NavElement>Request for Holiday</NavElement></Link> 
                 <Link to={'/invoice'} className="Link"><NavElement>Download Invoice</NavElement></Link>
+                 <NavElement style={{color:'red' ,cursor:'pointer'}} onClick={LogOut} >Logout</NavElement> 
             </NavContainer>
         </Header>
            

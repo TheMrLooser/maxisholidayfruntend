@@ -8,6 +8,7 @@ import { Status, Status_2 } from './Status';
 import styled from 'styled-components'
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import axios from 'axios'
+import Loader from '../loder/loder'
 
 
 const UpdateContainer = styled.div`
@@ -66,9 +67,10 @@ export const UpdateClient = ({setOpeUpdatelPart , data}) => {
 
 
     const [membershipType,setMembershipType] = useState("")
+    const [showLoader,setShoLoader] = useState(false)
     const UpgradePackage= async()=>{
-        const res  = await axios.put('https://maxis-holiday.herokuapp.com/client/update-client',{clientId:data.clientId, membershipType});
-
+      setShoLoader(true)
+      const res  = await axios.put('https://maxis-holiday.herokuapp.com/client/update-client',{clientId:data.clientId, membershipType});
         setMessage(res.data)
         if(res.status==202){
             setStatus('fail')
@@ -76,6 +78,7 @@ export const UpdateClient = ({setOpeUpdatelPart , data}) => {
 
         }
         setSTATUS(true)
+        setShoLoader(false)
     }
      
 
@@ -97,7 +100,7 @@ export const UpdateClient = ({setOpeUpdatelPart , data}) => {
                 <ElementWrapper><Title>City*</Title><Input required placeholder='Enter City' onChange={(e)=>setCity(e.target.value)}/></ElementWrapper>
                
               </UpdateContainer>
-              <Button onClick={Update}>Update</Button>
+              <Button onClick={Update}>{showLoader ? <Loader/> : "Update"}</Button>
 
               <Heading>Upgrade Premium</Heading>
               
@@ -114,7 +117,7 @@ export const UpdateClient = ({setOpeUpdatelPart , data}) => {
                     <Option value={'25 Years Titanium 1BR'}>25 Years Titanium 1BR</Option>
                 </Select>
               </ElementWrapper>
-              <Button onClick={UpgradePackage}>Upgrade Package</Button>
+              <Button onClick={UpgradePackage}>{showLoader ? <Loader/>  :  "Upgrade Package"}</Button>
         </ClientDetailWrapper> 
      </>
   )

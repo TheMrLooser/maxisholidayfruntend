@@ -30,7 +30,6 @@ export const EmployeeHome = () => {
                     <Route path='/send-email' element={<SendMail/>}/>
                     <Route path='/dueamount' element={<DueAmount/>}/>
                     <Route path='/statistics' element={<Statistics/>}/>
-                    {/* <Route path='/login' element={<Login/>}/> */}
                 </Routes>
 
                 

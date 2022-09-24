@@ -3,6 +3,7 @@ import { BodyWrapper, ElementWrapper, Heading, Title, Wrapper } from '../styledC
 import {Button , Input} from "../styledComponents/Login"
 import axios from 'axios'
 import { Status } from './Status'
+import Loader from '../loder/loder'
 
 export const MakeEntry = () => {
 
@@ -18,7 +19,10 @@ export const MakeEntry = () => {
     const [shoStatus,setShowStatus] = useState(false);
     const [message,setMessage] = useState("")
     const [STATUS,setSTATUS] = useState("")
+
+    const [showLoader,setShoLoader] = useState(false)
     const submitData = async()=>{
+         setShoLoader(true)
         const data = {ClientId:clientId , City:city, CheckIn:checkIn,CheckOut:checkOut,Days:days,Nights:nights, OneDayPrice:oneDayPrice,Remark:remark , BookingDate:BookingDate}
         const res = await axios.put('https://maxis-holiday.herokuapp.com/client/update-client',{usingHolidayPackage:data ,clientId})
         setMessage(res.data)
@@ -28,6 +32,8 @@ export const MakeEntry = () => {
 
         }
         setShowStatus(true)
+        setShoLoader(false)
+
     }
 
 
@@ -71,7 +77,7 @@ export const MakeEntry = () => {
                 </ElementWrapper>
 
             </BodyWrapper>
-                <Button onClick={submitData}>Book</Button>
+                <Button onClick={submitData}>{showLoader ? <Loader/> : "Book" }</Button>
                 
         </Wrapper>
     </>

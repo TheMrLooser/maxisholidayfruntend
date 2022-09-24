@@ -13,18 +13,20 @@ export const SendMail = ({data , setOpeMailPart}) => {
 
     const [subject,setSubject] = useState("")
     const [message,setMessage] = useState("")
-    const [resMessage,setResMessage] = useState("Sending....")
+    const [resMessage,setResMessage] = useState("")
     const [Status,setStatus] = useState(false)
-    const [LoaderStatus,setLoaderStatus] = useState(false)
+    const [showLoader,setShoLoader] = useState(false)
     const sendMail = async ()=>{
-        setLoaderStatus(true)
+        setShoLoader(true)
         const res = await axios.post('https://maxis-holiday.herokuapp.com/employee/send-mail',{subject,message,to:data.email});
         if(res.status===200){
             setResMessage(res.data)
             setStatus(true)
-            setLoaderStatus(false)
 
         }
+
+        setShoLoader(false)
+
     }
  
   return (
@@ -37,7 +39,7 @@ export const SendMail = ({data , setOpeMailPart}) => {
                 <ElementWrapper><Title>To</Title><Input value={data.email}/></ElementWrapper>
                 <ElementWrapper><Title>Subject</Title><Input placeholder='Enter Subject' onChange={(e)=>setSubject(e.target.value)}/></ElementWrapper>
                 <ElementWrapper><Title>Body</Title><TextArea style={{minHeight:'200px'}} placeholder=" Enter Message Here.." onChange={(e)=>setMessage(e.target.value)}/></ElementWrapper>
-                <Button onClick={sendMail}>{LoaderStatus?<Loader/>:"Send"}</Button>
+                <Button onClick={sendMail}>{showLoader?<Loader/>:"Send"}</Button>
             </Wrapper>
         </Container>
     </>
