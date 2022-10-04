@@ -13,7 +13,7 @@ import { Input } from '../styledComponents/Login';
 
 
 
-
+ 
  
 const filterdata = (user,searchText)=>{
     if (!searchText) {
@@ -23,8 +23,7 @@ const filterdata = (user,searchText)=>{
     return user.filter((data)=>{
         const dataname = data.name.toLowerCase() ;
         const clientId = data.clientId.toLowerCase() ;
-        const email = data.email.toLowerCase() ;
-        return  dataname.includes(searchText.toLowerCase()) ||email.includes(searchText.toLowerCase()) || clientId.includes(searchText.toLowerCase())
+        return  dataname.includes(searchText.toLowerCase())  || clientId.includes(searchText.toLowerCase())
     })
   
   }

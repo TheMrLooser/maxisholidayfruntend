@@ -79,6 +79,14 @@ export const RegisterNewClient = () => {
                         setMeaasge(res.data)
                         setStatus("success") 
                         setSTATUS(true)
+                        const responce = await axios.post('http://localhost:4000/employee/send-mail/default',{to:"ankushsoni.236303@gmail.com",
+                         clientId:res.data.clientId,name,email,phone,netAmount, 
+                         salesEmployeeId:currentUser.data.employeeId,AMC,membershipType,membershipYear,
+                         dateOfJoining:todaysDate
+                        
+                        });
+                        console.log(responce.data)
+
                     }
             
                     setShoLoader(false)
@@ -115,7 +123,7 @@ export const RegisterNewClient = () => {
                 <ElementWrapper><Title>Third Child Name</Title><Input   placeholder='Enter Third Child Name' onChange={(e)=>setThirdChildName(e.target.value)}/></ElementWrapper>
                 <ElementWrapper><Title>Third Child DOB</Title><Input type={'date'}  placeholder='Enter Third Child DOB' onChange={(e)=>setThirdChildDOB(e.target.value)}/></ElementWrapper>
                 <ElementWrapper><Title>AMC</Title><Input required placeholder='Enter AMC' onChange={(e)=>setAMC(e.target.value)}/></ElementWrapper>
-                <ElementWrapper><Title>Remark</Title><Input   placeholder='Enter Remark' onChange={(e)=>setRemark(e.target.value)}/></ElementWrapper>
+                <ElementWrapper><Title>Remark</Title><TextArea   placeholder='Enter Remark' onChange={(e)=>setRemark(e.target.value)}/></ElementWrapper>
                 <ElementWrapper><Title>Adhar Card NO.</Title><Input   placeholder='Enter Adhsr card no.' onChange={(e)=>setAdharCardNumber(e.target.value)}/></ElementWrapper>
                 <ElementWrapper><Title>MembershipYear</Title><Input required placeholder='Enter MembershipYear' onChange={(e)=>setMembershipYear(e.target.value)}/></ElementWrapper>
                 <ElementWrapper><Title>Membership Type</Title>
@@ -127,6 +135,7 @@ export const RegisterNewClient = () => {
                     <Option value={'5 Years Gold Studio '}>5 Years Gold Studio </Option>
                     <Option value={'5 Years Gold 1 BR '}>5 Years Gold 1 BR </Option>
                     <Option value={'10 Years Diamond Studio'}>10 Years Diamond Studio </Option>
+                    <Option value={'10 Years Diamond 1BR'}>10 Years Diamond 1BR </Option>
                     <Option value={'25 Years years Titanium Studio'}>25 Years years Titanium Studio</Option>
                     <Option value={'25 Years Titanium 1BR'}>25 Years Titanium 1BR</Option>
                 </Select>
