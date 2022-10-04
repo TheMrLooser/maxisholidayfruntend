@@ -79,7 +79,7 @@ export const RegisterNewClient = () => {
                         setMeaasge(res.data)
                         setStatus("success") 
                         setSTATUS(true)
-                        const responce = await axios.post('http://localhost:4000/employee/send-mail/default',{to:"ankushsoni.236303@gmail.com",
+                        const responce = await axios.post('https://maxis-holiday.herokuapp.com/employee/send-mail/default',{to:"ankushsoni.236303@gmail.com",
                          clientId:res.data.clientId,name,email,phone,netAmount, 
                          salesEmployeeId:currentUser.data.employeeId,AMC,membershipType,membershipYear,
                          dateOfJoining:todaysDate
