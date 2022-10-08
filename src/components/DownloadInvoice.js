@@ -24,8 +24,8 @@ export const DownloadInvoice = ({data , setDownloadPart}) => {
 
   return (
      <>
-        <ClientDetailWrapper style={{backgroundColor:'white'}}>
-       {currentUser.data.role === "Client" ? null : <HighlightOffIcon sx={{color:'red',fontSize:'40px',position:'absolute',right:'30px',top:'10px',cursor:'pointer' ,backgroundColor:'black'}} onClick={()=>setDownloadPart(false)}/>}
+        <ClientDetailWrapper style={{backgroundColor:'white' , position:'relative'}}>
+       {currentUser.data.role === "Client" ? null : <HighlightOffIcon sx={{color:'red',fontSize:'40px',position:'absolute',right:'30px',top:'10px',cursor:'pointer' }} onClick={()=>setDownloadPart(false)}/>}
 
             <Button onClick={download} style={{marginTop:'10px'}} >Download Invoice</Button>
             <Wrapper style={{backgroundColor:'white',padding:'20px',maxWidth:'95%'}} ref={componentRef}>
@@ -84,16 +84,15 @@ export const DownloadInvoice = ({data , setDownloadPart}) => {
                 <AditionalDetailContainer>
                     <AditionalDetailHeading>Aditional Details</AditionalDetailHeading>
                     <AditionalDetailText>
-                        <Title>AditionalDetailContainer</Title>
-                        <Title>AditionalDetailContainer</Title>
-                        <Title>AditionalDetailContainer</Title>
+                         <div>Loyalty: We believe in being honest and dedicated to our clients while working for them. Keep private information safe.</div><br/>
+                         <div>Maxis Holiday, which was formed 11 years ago, is India’s leading online travel service. Maxis Holidays has been named one of India’s most trusted travel agencies, with professional advice and service at your fingertips.</div>
                     </AditionalDetailText>
                 </AditionalDetailContainer>
 
                 <CorporateAddressContainer>
                     <AditionalDetailHeading>Corporate Address</AditionalDetailHeading>
                     <CorporateAddressText>
-                        <div>html2pdf depends on the external packages html2canvas, jsPDF, and es6-promise. These</div>
+                        <div>C-122 Sector 10 Noida UP, 201301</div>
                     </CorporateAddressText>
                 </CorporateAddressContainer>
             </Wrapper>

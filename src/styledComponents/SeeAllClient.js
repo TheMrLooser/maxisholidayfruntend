@@ -37,7 +37,7 @@ padding-bottom:50px;
 border-radius:5px;
 min-height:90vh;
 top:10px;
-${'' /* position:fixed; */}
+position:relative;
 display:flex;
 flex-direction:column;
 align-items:center;

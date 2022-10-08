@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import {Button , Input} from "../styledComponents/Login"
 import { BodyWrapper, ElementWrapper, Heading, Title } from '../styledComponents/MakeEntry'
@@ -79,22 +79,50 @@ export const RegisterNewClient = () => {
                         setMeaasge(res.data)
                         setStatus("success") 
                         setSTATUS(true)
-                        const responce = await axios.post('https://maxis-holiday.herokuapp.com/employee/send-mail/default',{to:"ankushsoni.236303@gmail.com",
+                        await axios.post('https://maxis-holiday.herokuapp.com/employee/send-mail/default',{to:email,
                          clientId:res.data.clientId,name,email,phone,netAmount, 
                          salesEmployeeId:currentUser.data.employeeId,AMC,membershipType,membershipYear,
                          dateOfJoining:todaysDate
                         
                         });
-                        console.log(responce.data)
+                        
 
                     }
             
                     setShoLoader(false)
                     
                 }
-    
          
 
+                const [Data,setData] = useState([]);
+                const [getState,setGetState] = useState([])
+                // const [salectState,setSalectState] = useState()
+                const [getCity,setGetCity] = useState([])
+                // const [salectCity,setSalectCity] = useState()
+                useEffect(()=>{
+                    const getContryState_city = async ()=>{
+                        var res = await axios.get("https://maxis-holiday.herokuapp.com/api/countries");
+                            setData(res.data) 
+                    }
+                    getContryState_city()
+                },[])
+                
+                const country = [...new Set(Data.map(items=>items.country))]
+                country.sort()
+                const handleCountries = ( )=>{
+                    let states = Data.filter(states=>states.country==='India')
+                    states = [...new Set(states.map(items=>items.subcountry))]
+                    states.sort()
+                    setGetState(states)
+                }
+                const handleState = (state)=>{
+                    setState(state)
+                    let cities = Data.filter(states=>states.subcountry===state)
+                    cities = [...new Set(cities.map(items=>items.name))]
+                    cities.sort()
+                    setGetCity(cities)
+                }
+                
 
   return (
     <>
@@ -108,8 +136,22 @@ export const RegisterNewClient = () => {
                 <ElementWrapper><Title>Gender*</Title><Input required placeholder='Enter Gender' onChange={(e)=>setGender(e.target.value)}/></ElementWrapper>
                 <ElementWrapper><Title>Address*</Title><TextArea required placeholder='Enter Address' onChange={(e)=>setAddress(e.target.value)}/></ElementWrapper>
                 <ElementWrapper><Title>Net Amount*</Title><Input required placeholder='Enter Net Amount' onChange={(e)=>setNetAmount(e.target.value)}/></ElementWrapper>
-                <ElementWrapper><Title>State*</Title><Input required placeholder='Enter State' onChange={(e)=>setState(e.target.value)}/></ElementWrapper>
-                <ElementWrapper><Title>City*</Title><Input required placeholder='Enter City' onChange={(e)=>setCity(e.target.value)}/></ElementWrapper>
+                
+                <ElementWrapper><Title>State</Title>
+                <Select onChange={(e)=>handleState(e.target.value)} onClick={handleCountries}>
+                    <Option>Select State</Option>
+                    {getState.map(items=>  <Option key={items} value={items}>{items}</Option>)}
+                    
+                </Select>
+                </ElementWrapper>
+                <ElementWrapper><Title>City</Title>
+                <Select onChange={(e)=>setCity(e.target.value)}>
+                    <Option>Select City</Option>
+                    {getCity.map(items=>  <Option key={items} value={items}>{items}</Option>)}
+                    
+                </Select>
+                </ElementWrapper>
+                
                 <ElementWrapper><Title>DOB*</Title><Input type={'date'} required placeholder='Enter DOB' onChange={(e)=>setDOB(e.target.value)}/></ElementWrapper>
                 <ElementWrapper><Title>Father's Name*</Title><Input required placeholder='Enter Fathers Name' onChange={(e)=>setFathersName(e.target.value)}/></ElementWrapper>
                 <ElementWrapper><Title>Mothers's Name*</Title><Input required placeholder='Enter Mothers Name' onChange={(e)=>setMothersName(e.target.value)}/></ElementWrapper>
@@ -125,7 +167,21 @@ export const RegisterNewClient = () => {
                 <ElementWrapper><Title>AMC</Title><Input required placeholder='Enter AMC' onChange={(e)=>setAMC(e.target.value)}/></ElementWrapper>
                 <ElementWrapper><Title>Remark</Title><TextArea   placeholder='Enter Remark' onChange={(e)=>setRemark(e.target.value)}/></ElementWrapper>
                 <ElementWrapper><Title>Adhar Card NO.</Title><Input   placeholder='Enter Adhsr card no.' onChange={(e)=>setAdharCardNumber(e.target.value)}/></ElementWrapper>
-                <ElementWrapper><Title>MembershipYear</Title><Input required placeholder='Enter MembershipYear' onChange={(e)=>setMembershipYear(e.target.value)}/></ElementWrapper>
+                {/* <ElementWrapper><Title>MembershipYear</Title><Input required placeholder='Enter MembershipYear' onChange={(e)=>setMembershipYear(e.target.value)}/></ElementWrapper> */}
+               
+                <ElementWrapper><Title>Membership Year</Title>
+                <Select onChange={(e)=>setMembershipYear(e.target.value)}>
+                    <Option>Select Membership Year</Option>
+                    <Option value={'1'}>1</Option>
+                    <Option value={'3'}>3 </Option>
+                    <Option value={'5'}>5</Option>
+                    <Option value={'10'}>10</Option>
+                    <Option value={'25'}>25</Option>
+                </Select>
+                </ElementWrapper>
+               
+               
+               
                 <ElementWrapper><Title>Membership Type</Title>
                 <Select onChange={(e)=>setMembershipType(e.target.value)}>
                     <Option>Select Membership Type</Option>

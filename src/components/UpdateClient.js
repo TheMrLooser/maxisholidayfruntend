@@ -84,7 +84,7 @@ export const UpdateClient = ({setOpeUpdatelPart , data}) => {
 
   return (
      <>
-        <ClientDetailWrapper style={{justifyContent:'center',alignItems:'center',gap:'20px'}}>
+        <ClientDetailWrapper style={{justifyContent:'center',alignItems:'center',gap:'20px',position:'relative'}}>
                  <HighlightOffIcon sx={{color:'red',fontSize:'40px',position:'absolute',right:'30px',top:'10px',cursor:'pointer'}} onClick={()=>setOpeUpdatelPart(false)}/>
         
                 <Heading>Update Client Detail</Heading>

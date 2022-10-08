@@ -10,7 +10,7 @@ flex-direction:column;
 min-height:70vh;
 gap:20px;
 border-radius:5px;
-background:#000000e0;
+background:#001916;
 padding-bottom:50px;
 `
 export const TextArea = styled.textarea`
