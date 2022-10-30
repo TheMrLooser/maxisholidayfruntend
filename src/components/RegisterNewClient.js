@@ -31,7 +31,7 @@ export const RegisterNewClient = () => {
         const [phone,setPhone] = useState(null)
         const [address,setAddress] = useState("")
         const [netAmount,setNetAmount] = useState("")
-        const [paidAmount,setPaidAmount] = useState("")
+        const [paidAmount,setPaidAmount] = useState(0)
         const [state,setState] = useState("")
         const [city,setCity] = useState("")
         const [DOB,setDOB] = useState("")
