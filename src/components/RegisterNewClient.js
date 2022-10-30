@@ -63,7 +63,7 @@ export const RegisterNewClient = () => {
         const [showLoader,setShoLoader] = useState(false)
         const register = async()=>{
                     setShoLoader(true)
-                    const res = await axios.post('http://localhost:4000/client/add-new-client',
+                    const res = await axios.post('https://maxis-holiday.herokuapp.com/client/add-new-client',
                     {
                         name,email,gender,phone,address,netAmount,state,city,DOB,
                         fathersName,mothersName,membershipYear,spouse,firstChildName,firstChildDOB,secondChildDOB,secondChildName,
