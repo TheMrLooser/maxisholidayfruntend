@@ -49,7 +49,7 @@ export const RegisterNewClient = () => {
         const [thirdChildName,setThirdChildName] = useState("")
         const [thirdChildDOB,setThirdChildDOB] = useState("")
         const [AMC,setAMC] = useState(0)
-        const [AMCStatus,SetAMCStatus]  = useState("")
+        const [AMCStatus,setAMCStatus]  = useState("")
         const [adharCardNumber,setAdharCardNumber] = useState(0)
         const [remark,setRemark] = useState("")
         const [membershipType,setMembershipType] = useState("")
@@ -63,12 +63,12 @@ export const RegisterNewClient = () => {
         const [showLoader,setShoLoader] = useState(false)
         const register = async()=>{
                     setShoLoader(true)
-                    const res = await axios.post('https://maxis-holiday.herokuapp.com/client/add-new-client',
+                    const res = await axios.post('http://localhost:4000/client/add-new-client',
                     {
                         name,email,gender,phone,address,netAmount,state,city,DOB,
                         fathersName,mothersName,membershipYear,spouse,firstChildName,firstChildDOB,secondChildDOB,secondChildName,
                         thirdChildDOB,thirdChildName,salesEmployeeId:currentUser.data.employeeId,AMC,adharCardNumber,remark,spouseDOB,marriageAnniversaryDate:MAD,membershipType,
-                        dateOfJoining:todaysDate,AMCStatus,paidAmount
+                        dateOfJoining:todaysDate,paidAmount,AMCStatus
                     }
                     );
                     if(res.status===202){
@@ -177,7 +177,7 @@ export const RegisterNewClient = () => {
                 <ElementWrapper><Title>Third Child DOB</Title><Input type={'date'}  placeholder='Enter Third Child DOB' onChange={(e)=>setThirdChildDOB(e.target.value)}/></ElementWrapper>
                 <ElementWrapper><Title>AMC</Title><Input required placeholder='Enter AMC' onChange={(e)=>setAMC(e.target.value)}/></ElementWrapper>
                 <ElementWrapper><Title>AMC Status</Title> 
-                    <Select onChange={(e)=>SetAMCStatus(e.target.value)}>
+                    <Select onChange={(e)=>setAMCStatus(e.target.value)}>
                         <Option>Select AMC Status</Option>
                         <Option value={'Paid'}>Paid</Option>
                         <Option value={'Unpaid'}>Unpaid </Option>
