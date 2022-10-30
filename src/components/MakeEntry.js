@@ -4,6 +4,7 @@ import {Button , Input} from "../styledComponents/Login"
 import axios from 'axios'
 import { Status } from './Status'
 import Loader from '../loder/loder'
+import { TextArea } from '../styledComponents/RegisterNewClient'
 
 export const MakeEntry = () => {
 
@@ -13,7 +14,7 @@ export const MakeEntry = () => {
     const [checkOut,setCheckOut] = useState("")
     const [days,setDays] = useState(0)
     const [nights,setNights] = useState(0) 
-    const [oneDayPrice,setOneDayPrice] = useState(0)
+    // const [oneDayPrice,setOneDayPrice] = useState(0)
     const [remark,setRemark] = useState("")
     const BookingDate = `${new Date().getDate() }-${new Date().getMonth()}-${new Date().getFullYear()}`
     const [shoStatus,setShowStatus] = useState(false);
@@ -23,7 +24,7 @@ export const MakeEntry = () => {
     const [showLoader,setShoLoader] = useState(false)
     const submitData = async()=>{
          setShoLoader(true)
-        const data = {ClientId:clientId , City:city, CheckIn:checkIn,CheckOut:checkOut,Days:days,Nights:nights, OneDayPrice:oneDayPrice,Remark:remark , BookingDate:BookingDate}
+        const data = {ClientId:clientId , City:city, CheckIn:checkIn,CheckOut:checkOut,Days:days,Nights:nights,Remark:remark , BookingDate:BookingDate}
         const res = await axios.put('https://maxis-holiday.herokuapp.com/client/update-client',{usingHolidayPackage:data ,clientId})
         setMessage(res.data)
         if(res.status==202){
@@ -67,13 +68,13 @@ export const MakeEntry = () => {
                     <Title>Nights</Title>
                     <Input   placeholder='Enter No. of Nights'  onChange={(e)=>setNights(e.target.value)}/>
                 </ElementWrapper>
-                <ElementWrapper>
+                {/* <ElementWrapper>
                     <Title>One Day Price*</Title>
                     <Input required placeholder='Enter One Day Price'  onChange={(e)=>setOneDayPrice(e.target.value)}/>
-                </ElementWrapper>
+                </ElementWrapper> */}
                 <ElementWrapper>
                     <Title>Remark</Title>
-                    <Input   placeholder='Remark'  onChange={(e)=>setRemark(e.target.value)}/>
+                    <TextArea   placeholder='Remark'  onChange={(e)=>setRemark(e.target.value)}/>
                 </ElementWrapper>
 
             </BodyWrapper>

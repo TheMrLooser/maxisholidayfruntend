@@ -31,6 +31,7 @@ export const RegisterNewClient = () => {
         const [phone,setPhone] = useState(null)
         const [address,setAddress] = useState("")
         const [netAmount,setNetAmount] = useState("")
+        const [paidAmount,setPaidAmount] = useState("")
         const [state,setState] = useState("")
         const [city,setCity] = useState("")
         const [DOB,setDOB] = useState("")
@@ -48,10 +49,10 @@ export const RegisterNewClient = () => {
         const [thirdChildName,setThirdChildName] = useState("")
         const [thirdChildDOB,setThirdChildDOB] = useState("")
         const [AMC,setAMC] = useState(0)
+        const [AMCStatus,SetAMCStatus]  = useState("")
         const [adharCardNumber,setAdharCardNumber] = useState(0)
         const [remark,setRemark] = useState("")
         const [membershipType,setMembershipType] = useState("")
-
         const {currentUser} = useSelector(state=>state.currentUser)
         const [status,setStatus] = useState("");
         const [Message,setMeaasge] = useState(null);
@@ -67,7 +68,7 @@ export const RegisterNewClient = () => {
                         name,email,gender,phone,address,netAmount,state,city,DOB,
                         fathersName,mothersName,membershipYear,spouse,firstChildName,firstChildDOB,secondChildDOB,secondChildName,
                         thirdChildDOB,thirdChildName,salesEmployeeId:currentUser.data.employeeId,AMC,adharCardNumber,remark,spouseDOB,marriageAnniversaryDate:MAD,membershipType,
-                        dateOfJoining:todaysDate
+                        dateOfJoining:todaysDate,AMCStatus,paidAmount
                     }
                     );
                     if(res.status===202){
@@ -133,9 +134,19 @@ export const RegisterNewClient = () => {
                 <ElementWrapper><Title>Name*</Title><Input required placeholder='Enter Name' onChange={(e)=>setName(e.target.value)}/></ElementWrapper>
                 <ElementWrapper><Title>Email*</Title><Input required placeholder='Enter Email' onChange={(e)=>setEmail(e.target.value)}/></ElementWrapper>
                 <ElementWrapper><Title>Phone*</Title><Input required placeholder='Enter Phone Number' onChange={(e)=>setPhone(e.target.value)}/></ElementWrapper>
-                <ElementWrapper><Title>Gender*</Title><Input required placeholder='Enter Gender' onChange={(e)=>setGender(e.target.value)}/></ElementWrapper>
+                <ElementWrapper><Title>Gender*</Title> 
+                    <Select onChange={(e)=>setGender(e.target.value)}>
+                        <Option>Select Gender</Option>
+                        <Option value={'Male'}>Male</Option>
+                        <Option value={'Female'}>Female </Option>
+                        <Option value={'Transgender'}>Transgender</Option>
+                    
+                    </Select>
+                </ElementWrapper>
+                
                 <ElementWrapper><Title>Address*</Title><TextArea required placeholder='Enter Address' onChange={(e)=>setAddress(e.target.value)}/></ElementWrapper>
-                <ElementWrapper><Title>Net Amount*</Title><Input required placeholder='Enter Net Amount' onChange={(e)=>setNetAmount(e.target.value)}/></ElementWrapper>
+                <ElementWrapper><Title>Membership Amount*</Title><Input required placeholder='Enter Membership Amount' onChange={(e)=>setNetAmount(e.target.value)}/></ElementWrapper>
+                <ElementWrapper><Title>Paid Amount*</Title><Input required placeholder='Enter Paid Amount' onChange={(e)=>setPaidAmount(e.target.value)}/></ElementWrapper>
                 
                 <ElementWrapper><Title>State</Title>
                 <Select onChange={(e)=>handleState(e.target.value)} onClick={handleCountries}>
@@ -165,6 +176,14 @@ export const RegisterNewClient = () => {
                 <ElementWrapper><Title>Third Child Name</Title><Input   placeholder='Enter Third Child Name' onChange={(e)=>setThirdChildName(e.target.value)}/></ElementWrapper>
                 <ElementWrapper><Title>Third Child DOB</Title><Input type={'date'}  placeholder='Enter Third Child DOB' onChange={(e)=>setThirdChildDOB(e.target.value)}/></ElementWrapper>
                 <ElementWrapper><Title>AMC</Title><Input required placeholder='Enter AMC' onChange={(e)=>setAMC(e.target.value)}/></ElementWrapper>
+                <ElementWrapper><Title>AMC Status</Title> 
+                    <Select onChange={(e)=>SetAMCStatus(e.target.value)}>
+                        <Option>Select AMC Status</Option>
+                        <Option value={'Paid'}>Paid</Option>
+                        <Option value={'Unpaid'}>Unpaid </Option>
+                    
+                    </Select>
+                </ElementWrapper>
                 <ElementWrapper><Title>Remark</Title><TextArea   placeholder='Enter Remark' onChange={(e)=>setRemark(e.target.value)}/></ElementWrapper>
                 <ElementWrapper><Title>Adhar Card NO.</Title><Input   placeholder='Enter Adhsr card no.' onChange={(e)=>setAdharCardNumber(e.target.value)}/></ElementWrapper>
                 {/* <ElementWrapper><Title>MembershipYear</Title><Input required placeholder='Enter MembershipYear' onChange={(e)=>setMembershipYear(e.target.value)}/></ElementWrapper> */}
@@ -176,6 +195,7 @@ export const RegisterNewClient = () => {
                     <Option value={'3'}>3 </Option>
                     <Option value={'5'}>5</Option>
                     <Option value={'10'}>10</Option>
+                    <Option value={'15'}>15</Option>
                     <Option value={'25'}>25</Option>
                 </Select>
                 </ElementWrapper>
@@ -192,6 +212,8 @@ export const RegisterNewClient = () => {
                     <Option value={'5 Years Gold 1 BR '}>5 Years Gold 1 BR </Option>
                     <Option value={'10 Years Diamond Studio'}>10 Years Diamond Studio </Option>
                     <Option value={'10 Years Diamond 1BR'}>10 Years Diamond 1BR </Option>
+                    <Option value={'15 Years Platinum Studio'}>15 Years Platinum Studio </Option>
+                    <Option value={'15 Years Platinum 1BR'}>15 Years Platinum 1BR </Option>
                     <Option value={'25 Years years Titanium Studio'}>25 Years years Titanium Studio</Option>
                     <Option value={'25 Years Titanium 1BR'}>25 Years Titanium 1BR</Option>
                 </Select>
