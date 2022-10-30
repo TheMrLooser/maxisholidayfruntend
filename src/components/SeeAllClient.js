@@ -14,6 +14,7 @@ import { Input } from '../styledComponents/Login';
 import {Link}from 'react-router-dom'
 import { SendMail } from './SendMail';
 import { DownloadInvoice } from './DownloadInvoice';
+import { useSelector } from 'react-redux';
 
 
 
@@ -36,6 +37,7 @@ const filterdata = (user,searchText)=>{
 
 
 export const SeeAllClient = () => {
+    const {loading , error , currentUser} = useSelector(state=>state.currentUser)
     const [Clients,setClients]  = useState(null)
     const [data,setData] = useState(null) 
     const [openDetailPart,setOpenDetailPart] = useState(false) 
@@ -143,7 +145,7 @@ export const SeeAllClient = () => {
                         <TD>{data.email}</TD>
                         <TD>{data.gender}</TD>
                         <TD>{data.dateOfJoining}</TD>
-                        <TD><ModeEditIcon sx={{color:'green',cursor:'pointer'}}  onClick={()=>VisitUpdateSec(data)}/>  <EmailIcon sx={{color:'yellow',cursor:'pointer'}}   onClick={()=>Sendmail(data)}/>  <DownloadForOfflineIcon sx={{color:'yellow',cursor:'pointer'}}   onClick={()=>DownloadInvoices(data)}/>  <DeleteIcon sx={{color:'red',position:'relative',cursor:'pointer'}} onClick={()=>ViewDelete(data)}/></TD>
+                        <TD><ModeEditIcon sx={{color:'green',cursor:'pointer'}}  onClick={()=>VisitUpdateSec(data)}/>  <EmailIcon sx={{color:'yellow',cursor:'pointer'}}   onClick={()=>Sendmail(data)}/>  <DownloadForOfflineIcon sx={{color:'yellow',cursor:'pointer'}}   onClick={()=>DownloadInvoices(data)}/> {currentUser.data.role=='Admin'? <DeleteIcon sx={{color:'red',position:'relative',cursor:'pointer'}} onClick={()=>ViewDelete(data)}/>:null}</TD>
                     </TR> 
                         
                     
