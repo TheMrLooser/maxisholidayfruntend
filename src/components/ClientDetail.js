@@ -53,7 +53,8 @@ export const ClientDetail = ({data}) => {
                     <ElementWrapper><Title>Balance Days :</Title><Element style={{color:'green'}}>{user.balanceDays}</Element></ElementWrapper>
                     <ElementWrapper><Title>Balance Nights :</Title><Element style={{color:'green'}}>{user.balanceNight}</Element></ElementWrapper>
                     <ElementWrapper><Title>AMC :</Title><Element>{user.AMC}</Element></ElementWrapper>
-                    <ElementWrapper><Title>Net Amount :</Title><Element>{user.netAmount}</Element></ElementWrapper>
+                    <ElementWrapper><Title>AMC Status:</Title><Element>{user.AMCStatus}</Element></ElementWrapper>
+                    <ElementWrapper><Title>Membership Amount :</Title><Element>{user.netAmount}</Element></ElementWrapper>
                     <ElementWrapper><Title>Paid Amount :</Title><Element style={{color:'red'}}>{user.paidAmount}</Element></ElementWrapper>
                     <ElementWrapper><Title>Balance Amount :</Title><Element style={{color:'green'}}>{user.balanceAmount}</Element></ElementWrapper>
                 </BodyWrapper>
