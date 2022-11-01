@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import { Login } from '../pages/Login'
 import { Contaienr, Wrapper } from '../styledComponents/EmployeeHome'
 import { DownloadInvoice } from './DownloadInvoice'
+import { DueAmc } from './DueAmc'
 import { DueAmount } from './DueAmount'
 import { MakeEntry } from './MakeEntry'
 import { NavBar } from './NavBar'
@@ -30,6 +31,7 @@ export const EmployeeHome = () => {
                     <Route path='/send-email' element={<SendMail/>}/>
                     <Route path='/dueamount' element={<DueAmount/>}/>
                     <Route path='/statistics' element={<Statistics/>}/>
+                    <Route path='/due-amc' element={< DueAmc/>}/>
                 </Routes>
 
                 

@@ -49,6 +49,7 @@ export const RegisterNewClient = () => {
         const [thirdChildName,setThirdChildName] = useState("")
         const [thirdChildDOB,setThirdChildDOB] = useState("")
         const [AMC,setAMC] = useState(0)
+        const [PaidAMCAmount,setPaidAMCAmount] = useState(0)
         const [AMCStatus,setAMCStatus]  = useState("")
         const [adharCardNumber,setAdharCardNumber] = useState(0)
         const [remark,setRemark] = useState("")
@@ -68,7 +69,7 @@ export const RegisterNewClient = () => {
                         name,email,gender,phone,address,netAmount,state,city,DOB,
                         fathersName,mothersName,membershipYear,spouse,firstChildName,firstChildDOB,secondChildDOB,secondChildName,
                         thirdChildDOB,thirdChildName,salesEmployeeId:currentUser.data.employeeId,AMC,adharCardNumber,remark,spouseDOB,marriageAnniversaryDate:MAD,membershipType,
-                        dateOfJoining:todaysDate,paidAmount,AMCStatus
+                        dateOfJoining:todaysDate,paidAmount,AMCStatus,PaidAMCAmount
                     }
                     );
                     if(res.status===202){
@@ -181,9 +182,11 @@ export const RegisterNewClient = () => {
                         <Option>Select AMC Status</Option>
                         <Option value={'Paid'}>Paid</Option>
                         <Option value={'Unpaid'}>Unpaid </Option>
+                        <Option value={'Due'}>Due </Option>
                     
                     </Select>
                 </ElementWrapper>
+                <ElementWrapper><Title>Paid AMC Amount</Title><Input   placeholder='Enter Paid AMC Amount' onChange={(e)=>setPaidAMCAmount(e.target.value)}/></ElementWrapper>
                 <ElementWrapper><Title>Remark</Title><TextArea   placeholder='Enter Remark' onChange={(e)=>setRemark(e.target.value)}/></ElementWrapper>
                 <ElementWrapper><Title>Adhar Card NO.</Title><Input   placeholder='Enter Adhsr card no.' onChange={(e)=>setAdharCardNumber(e.target.value)}/></ElementWrapper>
                 {/* <ElementWrapper><Title>MembershipYear</Title><Input required placeholder='Enter MembershipYear' onChange={(e)=>setMembershipYear(e.target.value)}/></ElementWrapper> */}

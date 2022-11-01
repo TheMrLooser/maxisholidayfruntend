@@ -45,6 +45,8 @@ export const UpdateClient = ({setOpeUpdatelPart , data}) => {
     const [netAmount,setNetAmount] = useState(data.netAmount)
     const [state,setState] = useState(data.state)
     const [city,setCity] = useState(data.city)
+    const [DMA,setDMA] = useState(0)
+
    
      
     const {currentUser} = useSelector(state=>state.currentUser)
@@ -52,9 +54,14 @@ export const UpdateClient = ({setOpeUpdatelPart , data}) => {
     const [Message,setMessage] = useState(null);
     const [STATUS,setSTATUS] = useState(false)
 
+    const [showLoader,setShoLoader] = useState(false)
+
+    const [AmcAmount,setAmcAmount] = useState(0);
+    const [AMCYear,setAMCYear] = useState(0);
 
     const Update = async()=>{
-        const res  = await axios.put('https://maxis-holiday.herokuapp.com/client/update-client',{clientId:data.clientId, name,email,gender,phone,address,netAmount,state,city});
+      setShoLoader(true)
+        const res  = await axios.put('https://maxis-holiday.herokuapp.com/client/update-client',{clientId:data.clientId, name,email,gender,phone,address,netAmount,state,city,DMA});
 
         setMessage(res.data)
         if(res.status==202){
@@ -63,11 +70,27 @@ export const UpdateClient = ({setOpeUpdatelPart , data}) => {
 
         }
         setSTATUS(true)
+        setShoLoader(false)
+
+    }
+    const UpdateAMC = async()=>{
+        setShoLoader(true)
+        const res  = await axios.put('https://maxis-holiday.herokuapp.com/client/update-client',{clientId:data.clientId, AMCYear, AmcAmount});
+
+        setMessage(res.data)
+        
+        if(res.status==202){
+            setStatus('fail')
+            setMessage(res.data)
+
+        }
+        setSTATUS(true)
+        setShoLoader(false)
+
     }
 
 
     const [membershipType,setMembershipType] = useState("")
-    const [showLoader,setShoLoader] = useState(false)
     const UpgradePackage= async()=>{
       setShoLoader(true)
       const res  = await axios.put('https://maxis-holiday.herokuapp.com/client/update-client',{clientId:data.clientId, membershipType});
@@ -98,6 +121,7 @@ export const UpdateClient = ({setOpeUpdatelPart , data}) => {
                 <ElementWrapper><Title>Net Amount*</Title><Input required placeholder='Enter Net Amount' onChange={(e)=>setNetAmount(e.target.value)}/></ElementWrapper>
                 <ElementWrapper><Title>State*</Title><Input required placeholder='Enter State' onChange={(e)=>setState(e.target.value)}/></ElementWrapper>
                 <ElementWrapper><Title>City*</Title><Input required placeholder='Enter City' onChange={(e)=>setCity(e.target.value)}/></ElementWrapper>
+                <ElementWrapper><Title>Enter New Paid Membership Amount</Title><Input required placeholder='Enter Paid Amount' onChange={(e)=>setDMA(e.target.value)}/></ElementWrapper>
                
               </UpdateContainer>
               <Button onClick={Update}>{showLoader ? <Loader/> : "Update"}</Button>
@@ -118,6 +142,17 @@ export const UpdateClient = ({setOpeUpdatelPart , data}) => {
                 </Select>
               </ElementWrapper>
               <Button onClick={UpgradePackage}>{showLoader ? <Loader/>  :  "Upgrade Package"}</Button>
+
+              <Heading>Update AMC</Heading>
+                <UpdateContainer>
+                    <ElementWrapper><Title>Enter AMC Amount</Title><Input required placeholder='Enter AMC Amount' type={'number'} onChange={(e)=>setAmcAmount(e.target.value)}/></ElementWrapper>
+                    <ElementWrapper><Title>Enter Year of Paying AMC</Title><Input required placeholder='Enter Year' type={'number'} onChange={(e)=>setAMCYear(e.target.value)}/></ElementWrapper>
+                </UpdateContainer>
+              <Button onClick={UpdateAMC}>{showLoader ? <Loader/>  :  "Update AMC"}</Button>
+
+
+
+
         </ClientDetailWrapper> 
      </>
   )

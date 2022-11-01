@@ -3,17 +3,12 @@ import React, { useEffect, useState } from 'react'
 import { ClientDetailWrapper, Search, SearchBTN, SearchContainer, SearchWrapper, Table, TD, TH, TR, Wrapper } from '../styledComponents/SeeAllClient'
 import ControlPointIcon from '@mui/icons-material/ControlPoint';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-// import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOffline';
-// import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import EmailIcon from '@mui/icons-material/Email';
 import { ClientDetail } from './ClientDetail';
 import { Heading } from '../styledComponents/MakeEntry';
-// import { UpdateClient } from './UpdateClient';
 import { Input } from '../styledComponents/Login';
-// import {Link}from 'react-router-dom'
 import { SendMail } from './SendMail';
 import Loader from '../loder/loder';
-// import { DownloadInvoice } from './DownloadInvoice';
 
 
 
@@ -36,17 +31,15 @@ const filterdata = (user,searchText)=>{
 
 
 
-export const DueAmount = () => {
+export const DueAmc = () => {
     const [Clients,setClients]  = useState(null) 
     const [data,setData] = useState(null) 
     const [openDetailPart,setOpenDetailPart] = useState(false) 
-    // const [openUpdatePart,setOpeUpdatelPart] = useState(false) 
     const [openMailPart,setOpeMailPart] = useState(false) 
-    // const [openDownloadPart,setDownloadPart] = useState(false) 
     const [searchText,setSearchtext] = useState("")
     useEffect(()=>{
         var fetchAllClient = async()=>{
-            const res = await axios.get('https://maxis-holiday.herokuapp.com/client/get-all-due-amount-client')
+            const res = await axios.get('https://maxis-holiday.herokuapp.com/client/get-all-due-amc-client')
             
             setClients(filterdata(res.data,searchText))
         }
@@ -95,33 +88,35 @@ export const DueAmount = () => {
            </SearchContainer>
             <Table>
                 <TR>
-                    <TH></TH>
                     <TH>SN</TH>
                     <TH>Salse Exe</TH>
                     <TH>ClientId</TH>
                     <TH>Name</TH>
-                    <TH>Membership Amount</TH>
-                    <TH>Paid Amount</TH>
-                    <TH>Balance Amount</TH>
+                    <TH>AMC / Year</TH>
+                    <TH>AMC Status</TH>
+                    <TH>Due AMC</TH>
+                    <TH>Last Paid</TH>
                     <TH>Action</TH>
                 </TR>
                 {Clients ? "":<div style={{width:'99%',height:'50px',display:'flex',alignItems:'center',justifyContent:'center',position:'absolute'}}><Loader/></div>}
 
                 {
+
+
                     Clients ? Clients.map((data,index) => 
-                    
                     <TR key={index}>
-                        <TD><ControlPointIcon sx={{color:'green',cursor:'pointer'}} onClick={()=>ViewDetail(data)}/></TD>
+                        {/* <TD><ControlPointIcon sx={{color:'green',cursor:'pointer'}} onClick={()=>ViewDetail(data)}/></TD> */}
                         <TD>{index}</TD>
                         <TD>{data.salesEmployeeId}</TD>
                         <TD>{data.clientId}</TD>
                         <TD>{data.name}</TD>
-                        <TD>{data.netAmount}</TD>
-                        <TD>{data.paidAmount}</TD>
-                        <TD>{data.balanceAmount}</TD>
+                        <TD>{data.AMC}</TD>
+                        <TD>{data.AMCStatus}</TD>
+                        <TD>{data.DueAMC}</TD>
+                        <TD>{data.LastAMCPaidYear}</TD>
                         <TD><EmailIcon sx={{color:'yellow',cursor:'pointer'}}   onClick={()=>Sendmail(data)}/>  </TD>
                     </TR> 
-                        
+                    
                     
                     )
 

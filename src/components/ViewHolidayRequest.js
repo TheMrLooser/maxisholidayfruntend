@@ -3,6 +3,7 @@ import { ClientDetailWrapper, Search, SearchBTN, SearchContainer, SearchWrapper,
 import { Input } from '../styledComponents/Login';
 import axios from 'axios';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import Loader from '../loder/loder';
 
 const filterdata = (user,searchText)=>{
     if (!searchText) {
@@ -75,6 +76,7 @@ export const ViewHolidayRequest = () => {
                     <TH>Date</TH>
                     <TH>Status</TH>
                 </TR>
+                {requests ? "":<div style={{width:'99%',height:'50px',display:'flex',alignItems:'center',justifyContent:'center',position:'absolute'}}><Loader/></div>}
                 
                 {
                     requests ? requests.map((data,index) => 

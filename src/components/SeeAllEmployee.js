@@ -7,6 +7,7 @@ import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { Heading } from '../styledComponents/MakeEntry';
 import { UpdateClient } from './UpdateClient';
 import { Input } from '../styledComponents/Login';
+import Loader from '../loder/loder';
 
 
 
@@ -90,6 +91,7 @@ export const SeeAllEmployee = () => {
                     <TH>Address</TH>
                     <TH>Action</TH>
                 </TR>
+                {Clients ? "":<div style={{width:'99%',height:'50px',display:'flex',alignItems:'center',justifyContent:'center',position:'absolute'}}><Loader/></div>}
 
                 {
                     Clients ? Clients.map((data,index) => 

@@ -15,6 +15,7 @@ import {Link}from 'react-router-dom'
 import { SendMail } from './SendMail';
 import { DownloadInvoice } from './DownloadInvoice';
 import { useSelector } from 'react-redux';
+import Loader from '../loder/loder';
 
 
 
@@ -132,7 +133,7 @@ export const SeeAllClient = () => {
                     <TH>J-date</TH>
                     <TH>Action</TH>
                 </TR>
-
+                {Clients ? "":<div style={{width:'99%',height:'50px',display:'flex',alignItems:'center',justifyContent:'center',position:'absolute'}}><Loader/></div>}
                 {
                     Clients ? Clients.map((data,index) => 
                     
