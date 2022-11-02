@@ -1,7 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { ClientDetailWrapper, Search, SearchBTN, SearchContainer, SearchWrapper, Table, TD, TH, TR, Wrapper } from '../styledComponents/SeeAllClient'
-import ControlPointIcon from '@mui/icons-material/ControlPoint';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import EmailIcon from '@mui/icons-material/Email';
 import { ClientDetail } from './ClientDetail';
@@ -45,25 +44,14 @@ export const DueAmc = () => {
         }
         fetchAllClient()
     },[searchText])
-
-    const ViewDetail = (data)=>{
-
-        setData(data)
-        setOpenDetailPart(true)
-    }
-    // const VisitUpdateSec = (data)=>{
-    //     setData(data)
-    //     setOpeUpdatelPart(true)
-    // }
+ 
+    
     const Sendmail = (data)=>{
         setData(data)
          setOpeMailPart(true)
     }
 
-    // const DownloadInvoices = (data)=>{
-    //     setData(data)
-    //     setDownloadPart(true)
-    // }
+    
  
 
   return (
@@ -77,9 +65,7 @@ export const DueAmc = () => {
             </ClientDetailWrapper>
             : null}
 
-           {/* { openUpdatePart ? <UpdateClient setOpeUpdatelPart={setOpeUpdatelPart} data={data}/>  : null} */}
             {openMailPart ? <SendMail data={data} setOpeMailPart={setOpeMailPart}/> : null}
-            {/* {openDownloadPart ? <DownloadInvoice data={data} setDownloadPart={setDownloadPart}/> : null} */}
            <SearchContainer>
                 <SearchWrapper>
                     <Input placeholder='Search heare...' onChange={(e)=>setSearchtext(e.target.value)}/>
@@ -105,7 +91,6 @@ export const DueAmc = () => {
 
                     Clients ? Clients.map((data,index) => 
                     <TR key={index}>
-                        {/* <TD><ControlPointIcon sx={{color:'green',cursor:'pointer'}} onClick={()=>ViewDetail(data)}/></TD> */}
                         <TD>{index}</TD>
                         <TD>{data.salesEmployeeId}</TD>
                         <TD>{data.clientId}</TD>

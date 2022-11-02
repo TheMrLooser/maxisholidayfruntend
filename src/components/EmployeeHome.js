@@ -1,8 +1,6 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { Login } from '../pages/Login'
 import { Contaienr, Wrapper } from '../styledComponents/EmployeeHome'
-import { DownloadInvoice } from './DownloadInvoice'
 import { DueAmc } from './DueAmc'
 import { DueAmount } from './DueAmount'
 import { MakeEntry } from './MakeEntry'

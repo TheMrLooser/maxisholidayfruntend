@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { ClientDetailWrapper, Search, SearchBTN, SearchContainer, SearchWrapper, Table, TD, TH, TR, Wrapper } from '../styledComponents/SeeAllClient'
+import { ClientDetailWrapper, SearchBTN, SearchContainer, SearchWrapper, Table, TD, TH, TR, Wrapper } from '../styledComponents/SeeAllClient'
 import ControlPointIcon from '@mui/icons-material/ControlPoint';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOffline';
@@ -11,7 +11,6 @@ import { ClientDetail } from './ClientDetail';
 import { Heading } from '../styledComponents/MakeEntry';
 import { UpdateClient } from './UpdateClient';
 import { Input } from '../styledComponents/Login';
-import {Link}from 'react-router-dom'
 import { SendMail } from './SendMail';
 import { DownloadInvoice } from './DownloadInvoice';
 import { useSelector } from 'react-redux';

@@ -74,9 +74,7 @@ export const NavBar = () => {
                        {
                         openDropDown ? <>
                         <DropdownContainer>
-                            {/* <DropdownElement onClick={ControleDropDown}>Generate Invoice</DropdownElement> */}
                            <Link to={'/dueamount'} className='Link'> <DropdownElement onClick={ControleDropDown}>Due Amount Report</DropdownElement></Link>
-                            {/* <DropdownElement onClick={ControleDropDown}>Invoice Report</DropdownElement> */}
                             <Link to={'/see-all-request'} className='Link'><DropdownElement  onClick={ControleDropDown}>Holiday Requests ({requests})</DropdownElement></Link>
                             <Link to={'/due-amc'} className='Link'><DropdownElement  onClick={ControleDropDown}>Due AMC</DropdownElement></Link>
                         </DropdownContainer>

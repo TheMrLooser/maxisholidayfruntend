@@ -1,10 +1,9 @@
 import React from 'react'
 import {useSelector} from 'react-redux'
 import { BodyContainer, BodyWrapper, Container, Element, ElementWrapper, Header, Heading, Logo, NavContainer, NavElement, Title, UserName, Wrapper } from '../styledComponents/ClientHome'
-import Loader from '../loder/loder'
 import PersonIcon from '@mui/icons-material/Person';
 import { ClientDetail } from './ClientDetail';
-import {BrowserRouter,Route,Routes,Link} from 'react-router-dom'
+import {Route,Routes,Link} from 'react-router-dom'
 import { HolidaysTaken } from './HolidaysTaken';
 import { RequestHoliday } from './RequestHoliday';
 import { DownloadInvoice } from './DownloadInvoice';
@@ -15,10 +14,8 @@ export const ClientHome = () => {
     const {loading, error,currentUser} = useSelector(state=>state.currentUser)
     const user = currentUser.data ? currentUser.data : null
     
-    // const navigate = useNavigate()
     const LogOut = async()=>{
       const res =   await axios.get('https://maxis-holiday.herokuapp.com/client/logout')
-        // navigate('/login')
         console.log(res.data)
         window.location.reload(true)
     }
@@ -29,7 +26,8 @@ export const ClientHome = () => {
         
         <Wrapper>
         <Header>
-            <Logo> <PersonIcon sx={{position: 'relative',fontSize:'50px' , color:'red'}}/></Logo>
+        
+            <Logo><PersonIcon sx={{position: 'relative',fontSize:'50px' , color:'red'}}/> </Logo>
             <UserName>Ankush</UserName>
             <NavContainer>
              <Link to={'/'} className="Link"><NavElement>Details</NavElement></Link>

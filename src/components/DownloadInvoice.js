@@ -14,10 +14,8 @@ export const DownloadInvoice = ({data , setDownloadPart}) => {
     const download = ()=>{
         const invoice = componentRef.current
         const option = {
-            // margin: 1,
             filename:'Invoice Report',
-            // html2canvas:{scale:2},
-            // jspdf:{unit:'in',format:'letter',orientation: 'portrait'}
+            
         }
         html2pdf().from(invoice).set(option).save();
     }
@@ -93,6 +91,7 @@ export const DownloadInvoice = ({data , setDownloadPart}) => {
                     <AditionalDetailHeading>Corporate Address</AditionalDetailHeading>
                     <CorporateAddressText>
                         <div>C-122 Sector 10 Noida UP, 201301</div>
+                        <div>115,1st Floor South Extn. Plaza-2 Masjid Moth South Extn. Plaza-2, New Delhi - 110049</div>
                     </CorporateAddressText>
                 </CorporateAddressContainer>
             </Wrapper>

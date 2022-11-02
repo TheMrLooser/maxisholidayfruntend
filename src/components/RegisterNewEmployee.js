@@ -1,6 +1,5 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-// import { useSelector } from 'react-redux'
 import Loader from '../loder/loder'
 import {Button , Input} from "../styledComponents/Login"
 import { BodyWrapper, ElementWrapper, Heading, Title } from '../styledComponents/MakeEntry'
@@ -24,7 +23,6 @@ export const RegisterNewEmployee = () => {
         const [city,setCity] = useState("")
         const [DOB,setDOB] = useState("")
         const [adharCardNumber,setAdharCardNumber] = useState(0)
-        // const {currentUser} = useSelector(state=>state.currentUser)
         const [status,setStatus] = useState("");
         const [Message,setMeaasge] = useState(null);
         const [STATUS,setSTATUS] = useState(false)

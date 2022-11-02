@@ -3,17 +3,12 @@ import React, { useEffect, useState } from 'react'
 import { ClientDetailWrapper, Search, SearchBTN, SearchContainer, SearchWrapper, Table, TD, TH, TR, Wrapper } from '../styledComponents/SeeAllClient'
 import ControlPointIcon from '@mui/icons-material/ControlPoint';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-// import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOffline';
-// import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import EmailIcon from '@mui/icons-material/Email';
 import { ClientDetail } from './ClientDetail';
 import { Heading } from '../styledComponents/MakeEntry';
-// import { UpdateClient } from './UpdateClient';
 import { Input } from '../styledComponents/Login';
-// import {Link}from 'react-router-dom'
 import { SendMail } from './SendMail';
 import Loader from '../loder/loder';
-// import { DownloadInvoice } from './DownloadInvoice';
 
 
 
@@ -40,9 +35,7 @@ export const DueAmount = () => {
     const [Clients,setClients]  = useState(null) 
     const [data,setData] = useState(null) 
     const [openDetailPart,setOpenDetailPart] = useState(false) 
-    // const [openUpdatePart,setOpeUpdatelPart] = useState(false) 
     const [openMailPart,setOpeMailPart] = useState(false) 
-    // const [openDownloadPart,setDownloadPart] = useState(false) 
     const [searchText,setSearchtext] = useState("")
     useEffect(()=>{
         var fetchAllClient = async()=>{
@@ -58,19 +51,13 @@ export const DueAmount = () => {
         setData(data)
         setOpenDetailPart(true)
     }
-    // const VisitUpdateSec = (data)=>{
-    //     setData(data)
-    //     setOpeUpdatelPart(true)
-    // }
+   
     const Sendmail = (data)=>{
         setData(data)
          setOpeMailPart(true)
     }
 
-    // const DownloadInvoices = (data)=>{
-    //     setData(data)
-    //     setDownloadPart(true)
-    // }
+   
  
 
   return (
@@ -84,9 +71,7 @@ export const DueAmount = () => {
             </ClientDetailWrapper>
             : null}
 
-           {/* { openUpdatePart ? <UpdateClient setOpeUpdatelPart={setOpeUpdatelPart} data={data}/>  : null} */}
             {openMailPart ? <SendMail data={data} setOpeMailPart={setOpeMailPart}/> : null}
-            {/* {openDownloadPart ? <DownloadInvoice data={data} setDownloadPart={setDownloadPart}/> : null} */}
            <SearchContainer>
                 <SearchWrapper>
                     <Input placeholder='Search heare...' onChange={(e)=>setSearchtext(e.target.value)}/>

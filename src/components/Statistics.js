@@ -1,9 +1,8 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Title } from '../styledComponents/MakeEntry'
+import Loader from '../loder/loder'
 import { Table, TD, TH, TR } from '../styledComponents/SeeAllClient'
-import { Heading, InsideWrapper, Wrapper ,Select ,Option, ReportContainer, ChartContainer } from '../styledComponents/Statistics'
-import { Doughnut} from 'react-chartjs-2'
+import { Heading, InsideWrapper, Wrapper ,Select ,Option, ReportContainer } from '../styledComponents/Statistics'
 
 export const Statistics = () => {
     const [month,setMonth] = useState("")
@@ -33,8 +32,9 @@ export const Statistics = () => {
             setClients(res.data)
         }
         fetchAllClient()
-    },[month])
+    },[ month])
 
+     
 
 
   return (
@@ -53,17 +53,21 @@ export const Statistics = () => {
                         <TR>
                             <TH>Date</TH>
                             <TH>Amount</TH>
+                            <TH>City</TH>
                         </TR>
+                        {Clients ? "":<div style={{width:'99%',height:'50px',display:'flex',alignItems:'center',justifyContent:'center',position:'absolute'}}><Loader/></div>}
+
                         {Clients ? Clients.map((data,index)=>data.dateOfJoining.includes(date) ?
                             <>
-                            <TR>
+                            <TR key={index}>
                                 <TD>{data.dateOfJoining}</TD>
                                 <TD>{data.netAmount}</TD>
+                                <TD>{data.city}</TD>
                             </TR>
                            {
                             data.usingHolidayPackage.map((Data_2,Index_2)=>
                             
-                            <TR>
+                            <TR key={Index_2}>
                                 <TD>{Data_2.BookingDate}</TD>
                                 <TD>{(Data_2.OneDayPrice)*(parseInt(Data_2.Days)+parseInt(Data_2.Nights))}</TD>
                             </TR>
@@ -72,43 +76,14 @@ export const Statistics = () => {
                            }
                             </>
                             
-                        : <Title>No Sales In This Month</Title>) : null}
+                        : null) : null}
 
-                        {/* {
-                            Clients ? Clients.map((data,index)=>data.usingHolidayPackage?.map((Data_2,Index_2)=>
-                            
-                            <TR>
-                                <TD>{Data_2.BookingDate}</TD>
-                                <TD>{(Data_2.OneDayPrice)*(parseInt(Data_2.Days)+parseInt(Data_2.Nights))}</TD>
-                            </TR>
-                            )
-                            
-                            )  : null
-                        } */}
 
                       </Table>
 
                 </ReportContainer>
 
             </InsideWrapper>
-
-            {/* <ReportContainer>
-                    <Heading>Chart Visulization</Heading>
-                    <ChartContainer>
-                        <Doughnut
-                            data={{
-                                labels:['January','February','March','April','May','June','July','August','September','October','November','December']
-                            }}
-                            height={400}
-                            width={400}
-                            options={{
-                                maintainAspectRatio:false
-                            }}
-
-                        />
-                    </ChartContainer>
-
-                </ReportContainer> */}
         </Wrapper> 
     </>
   )
