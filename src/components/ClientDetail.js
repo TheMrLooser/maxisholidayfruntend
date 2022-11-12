@@ -29,7 +29,7 @@ export const ClientDetail = ({data}) => {
                     <ElementWrapper><Title>Father's Name :</Title><Element>{user.fathersName}</Element></ElementWrapper>
                     <ElementWrapper><Title>Mother's Name :</Title><Element>{user.mothersName}</Element></ElementWrapper>
                     <ElementWrapper><Title>Marraige Annivarsary :</Title><Element>{user.marriageAnniversaryDate}</Element></ElementWrapper>
-                    <ElementWrapper><Title>Spouse :</Title><Element>{user.spouse}</Element></ElementWrapper>
+                    <ElementWrapper><Title>Spouse :</Title><Element>{user.spouseName}</Element></ElementWrapper>
                     <ElementWrapper><Title>Spouse DOB:</Title><Element>{user.spouseDOB}</Element></ElementWrapper>
                     <ElementWrapper><Title>First Child Name :</Title><Element>{user.firstChildName}</Element></ElementWrapper>
                     <ElementWrapper><Title>First Child DOB :</Title><Element>{user.firstChildDOB}</Element></ElementWrapper>

@@ -42,7 +42,7 @@ export const DueAmc = () => {
             
             setClients(filterdata(res.data,searchText))
         }
-        fetchAllClient()
+        fetchAllClient() 
     },[searchText])
  
     

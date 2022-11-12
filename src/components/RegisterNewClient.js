@@ -67,7 +67,7 @@ export const RegisterNewClient = () => {
                     const res = await axios.post('https://maxis-holiday.herokuapp.com/client/add-new-client',
                     {
                         name,email,gender,phone,address,netAmount,state,city,DOB,
-                        fathersName,mothersName,membershipYear,spouse,firstChildName,firstChildDOB,secondChildDOB,secondChildName,
+                        fathersName,mothersName,membershipYear,spouseName:spouse,firstChildName,firstChildDOB,secondChildDOB,secondChildName,
                         thirdChildDOB,thirdChildName,salesEmployeeId:currentUser.data.employeeId,AMC,adharCardNumber,remark,spouseDOB,marriageAnniversaryDate:MAD,membershipType,
                         dateOfJoining:todaysDate,paidAmount,AMCStatus,PaidAMCAmount
                     }
