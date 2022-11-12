@@ -10,8 +10,10 @@ flex-direction:column;
 min-height:70vh;
 gap:20px;
 border-radius:5px;
-background:#001916;
+/* background:#001916; */
 padding-bottom:50px;
+padding-top:50px;
+
 `
 export const TextArea = styled.textarea`
 width:100%;
@@ -21,6 +23,6 @@ padding-left:10px;
 border-radius:5px;
 font-size:16px;
 &:focus{
-    outline-color:#FBB03B
+    outline-color:#E8604C
 }
 `

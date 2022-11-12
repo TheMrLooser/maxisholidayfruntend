@@ -4,6 +4,7 @@ import { Account, Container, DropdownContainer, DropdownElement, Element, Elemen
 import {Link, useNavigate} from 'react-router-dom';
 import ExpandCircleDownIcon from '@mui/icons-material/ExpandCircleDown';
 import axios from 'axios'
+import logoImgPng from '../images/maxisLogo.png'
 
 export const NavBar = () => {
     const {loading , error , currentUser} = useSelector(state=>state.currentUser)
@@ -47,7 +48,7 @@ export const NavBar = () => {
      <>
         <Container>
             <Wrapper> 
-                <Logo src='https://maxisholidays.in/wp-content/uploads/2022/07/WhatsApp-Image-2022-07-24-at-10.41.01-AM-1.jpeg' width={'10%'} height={'10%'}/>
+                <Logo src= {logoImgPng} width={'10%'} height={'10%'}/>
                 <ElementWrapper>
                     {
                         user.role ==="Admin" ? 

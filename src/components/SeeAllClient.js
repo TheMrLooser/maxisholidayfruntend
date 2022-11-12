@@ -145,7 +145,7 @@ export const SeeAllClient = () => {
                         <TD>{data.email}</TD>
                         <TD>{data.gender}</TD>
                         <TD>{data.dateOfJoining}</TD>
-                        <TD><ModeEditIcon sx={{color:'green',cursor:'pointer'}}  onClick={()=>VisitUpdateSec(data)}/>  <EmailIcon sx={{color:'yellow',cursor:'pointer'}}   onClick={()=>Sendmail(data)}/>  <DownloadForOfflineIcon sx={{color:'yellow',cursor:'pointer'}}   onClick={()=>DownloadInvoices(data)}/> {currentUser.data.role=='Admin'? <DeleteIcon sx={{color:'red',position:'relative',cursor:'pointer'}} onClick={()=>ViewDelete(data)}/>:null}</TD>
+                        <TD ><ModeEditIcon sx={{color:'green',cursor:'pointer'}}  onClick={()=>VisitUpdateSec(data)}/>  <EmailIcon sx={{color:'orange',cursor:'pointer'}}   onClick={()=>Sendmail(data)}/>  <DownloadForOfflineIcon sx={{color:'darkgray',cursor:'pointer'}}   onClick={()=>DownloadInvoices(data)}/> {currentUser.data.role=='Admin'? <DeleteIcon sx={{color:'red',position:'relative',cursor:'pointer'}} onClick={()=>ViewDelete(data)}/>:null}</TD>
                     </TR> 
                         
                     

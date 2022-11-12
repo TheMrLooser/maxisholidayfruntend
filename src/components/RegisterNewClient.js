@@ -126,7 +126,7 @@ export const RegisterNewClient = () => {
                 }
                 
 
-  return (
+  return ( 
     <>
         <Wrapper onSubmit={(e)=>e.preventDefault()}>
             <Heading>Register New Client</Heading>

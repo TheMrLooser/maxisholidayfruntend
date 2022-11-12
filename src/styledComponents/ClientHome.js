@@ -7,7 +7,9 @@ display:flex;
 align-items:center;
 justify-content:center;
 flex-direction:column;
-background-image:url("https://tse1.mm.bing.net/th?id=OIP.GldWXhqPKyveuJlyMxCugQHaEK&pid=Api&P=0");
+/* background-image:url("https://tse1.mm.bing.net/th?id=OIP.GldWXhqPKyveuJlyMxCugQHaEK&pid=Api&P=0"); */
+background-image:url("http://hdqwalls.com/wallpapers/amazing-beautiful-places.jpg");
+
 background-repeat: no-repeat;
 background-size: cover;
 padding-top:50px;
@@ -21,7 +23,7 @@ display:flex;
 flex-direction:column;
 gap:20px;
 align-items:center;
-background-color:#000000e3;
+background-color:#080a29e3;
 border-radius:5px;
 padding:10px;
 `
@@ -86,7 +88,9 @@ border-top:1px solid gray;
 border-bottom:1px solid gray;
 `
 export const NavElement =  styled.div`
-
+&:hover{
+    color: #E8604C
+}
 `
 
 

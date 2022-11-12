@@ -104,7 +104,7 @@ export const DueAmount = () => {
                         <TD>{data.netAmount}</TD>
                         <TD>{data.paidAmount}</TD>
                         <TD>{data.balanceAmount}</TD>
-                        <TD><EmailIcon sx={{color:'yellow',cursor:'pointer'}}   onClick={()=>Sendmail(data)}/>  </TD>
+                        <TD><EmailIcon sx={{color:'orange',cursor:'pointer'}}   onClick={()=>Sendmail(data)}/>  </TD>
                     </TR> 
                         
                     

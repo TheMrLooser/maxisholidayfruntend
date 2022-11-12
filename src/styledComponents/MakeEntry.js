@@ -10,12 +10,13 @@ flex-direction:column;
 min-height:70vh;
 gap:20px;
 border-radius:5px;
-background:#000000e0;
+/* background:#000000e0; */
 
 `
 export const Heading = styled.div`
 font-size:30px;
-color:#FBB03B;
+/* color:#FBB03B; */
+color:black;
 font-weight:600;
 `
 export const BodyWrapper = styled.div`
@@ -35,6 +36,7 @@ max-width:300px;
 export const Title = styled.div`
 width:100%;
 font-size:16px;
-color:#FBB03B
+/* color:#FBB03B */
+color:black
 `
 

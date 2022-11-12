@@ -99,7 +99,7 @@ export const DueAmc = () => {
                         <TD>{data.AMCStatus}</TD>
                         <TD>{data.DueAMC}</TD>
                         <TD>{data.LastAMCPaidYear}</TD>
-                        <TD><EmailIcon sx={{color:'yellow',cursor:'pointer'}}   onClick={()=>Sendmail(data)}/>  </TD>
+                        <TD><EmailIcon sx={{color:'orange',cursor:'pointer'}}   onClick={()=>Sendmail(data)}/>  </TD>
                     </TR> 
                     
                     

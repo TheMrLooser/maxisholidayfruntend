@@ -8,23 +8,23 @@ export const Table = styled.table`
 font-family: arial, sans-serif;
 border-collapse: collapse;
 width: 100%;
-background-color:#000000e8;
+background-color:white;
 `
 export const TR = styled.tr`
-   
+    
 `
 export const TH = styled.th`
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
-    color:#fbb03f
+    color:#524855
 `
 export const TD = styled.td`
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
-    color:white;
-    position:relative
+    color:black;
+    position:relative;
     
 `
 
@@ -71,12 +71,13 @@ max-width:100px;
 border-radius:5px;
 font-size:20px;
 font-weight:600;
-background-color:#fbb03b;
+background-color:#E8604C;
+border: none;
 color:white;
 cursor:pointer;
 transition: background-color 1s;
 &:hover{
-background-color:green;
+background-color:#524855;
 
 }
 `

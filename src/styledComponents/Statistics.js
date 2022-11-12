@@ -5,6 +5,7 @@ width:100%;
 display:flex;
 flex-direction:column;
 align-items:center;
+padding-top: 50px;
 `
 export const InsideWrapper = styled.div`
 width:100%;
@@ -14,9 +15,11 @@ export const Heading = styled.div`
 width:100%;
 font-size:30px;
 font-weight:600;
-color:#fbb03b;
+color:black;
 display:flex;
 align-items:center;
+justify-content: center;
+margin-bottom: 50px;
 `
 export const Select = styled.select`
 width:100%;

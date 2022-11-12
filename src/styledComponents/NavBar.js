@@ -6,8 +6,10 @@ min-height:50px;
 display:flex;
 align-items:center;
 justify-content:center;
-background-color:#fbb03b;
+/* background-color:#fbb03b; */
+background-color:white;
 ${'' /* overflow:auto; */}
+box-shadow: 10px 1px 10px #00000057;
 `
 export const Wrapper = styled.div`
 width:100%;
@@ -32,6 +34,9 @@ position:relative;
 display:flex;
 align-items:center;
 cursor:pointer;
+&:hover{
+    color: #E8604C
+}
 `
 
 export const DropdownContainer = styled.div`
@@ -45,28 +50,30 @@ display:flex;
 flex-wrap:wrap;
 gap:10px;
 background-color:white;
+border-top: 1px solid black;
 
 
 `
 export const DropdownElement = styled.div`
 width:100%;
 font-size:16px;
-background-color:black;
-color:white;
+/* background-color:black; */
+color:black;
 height:30px;
 border-radius:5px;
 padding:0px 5px;
 &:hover{
-    background-color: #fbb03b;
+    /* background-color: #fbb03b; */
     cursor:pointer;
+    color: #E8604C;
 }
 
 `
 export const Account = styled.div`
 font-size:20px;
 font-weight:600;
-background-color:white;
+background-color:#E8604C;
 border-radius:5px;
 padding:2px 10px;
-color:darkred
+color:white
 `

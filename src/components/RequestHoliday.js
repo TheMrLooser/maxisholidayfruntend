@@ -49,7 +49,7 @@ export const RequestHoliday = ({currentUser}) => {
   return (
     <>
         <Wrapper onSubmit={(e)=>e.preventDefault()}>
-            <Heading>Request Holiday Form</Heading>
+            <Heading style={{color:'white'}}>Request Holiday Form</Heading>
             {shoStatus ? <Status status={STATUS} Message={message}/> : null}
             <BodyWrapper>
                 <ElementWrapper><Title>Check In</Title><Input required type={'date'} onChange={(e)=>setTo(e.target.value)}/></ElementWrapper>
