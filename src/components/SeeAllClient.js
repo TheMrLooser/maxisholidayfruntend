@@ -15,6 +15,7 @@ import { SendMail } from './SendMail';
 import { DownloadInvoice } from './DownloadInvoice';
 import { useSelector } from 'react-redux';
 import Loader from '../loder/loder';
+import { Link, Route, Routes } from 'react-router-dom';
 
 
 
@@ -99,7 +100,7 @@ export const SeeAllClient = () => {
                  <ClientDetail data={data}/> 
             </ClientDetailWrapper>
             : null}
-
+                 
            { openUpdatePart ? <UpdateClient setOpeUpdatelPart={setOpeUpdatelPart} data={data}/>  : null}
             {openMailPart ? <SendMail data={data} setOpeMailPart={setOpeMailPart}/> : null}
             {openDownloadPart ? <DownloadInvoice data={data} setDownloadPart={setDownloadPart}/> : null}
@@ -145,7 +146,7 @@ export const SeeAllClient = () => {
                         <TD>{data.email}</TD>
                         <TD>{data.gender}</TD>
                         <TD>{data.dateOfJoining}</TD>
-                        <TD ><ModeEditIcon sx={{color:'green',cursor:'pointer'}}  onClick={()=>VisitUpdateSec(data)}/>  <EmailIcon sx={{color:'orange',cursor:'pointer'}}   onClick={()=>Sendmail(data)}/>  <DownloadForOfflineIcon sx={{color:'darkgray',cursor:'pointer'}}   onClick={()=>DownloadInvoices(data)}/> {currentUser.data.role=='Admin'? <DeleteIcon sx={{color:'red',position:'relative',cursor:'pointer'}} onClick={()=>ViewDelete(data)}/>:null}</TD>
+                        <TD ><ModeEditIcon sx={{color:'green',cursor:'pointer'}}  onClick={()=>VisitUpdateSec(data)}/> <EmailIcon sx={{color:'orange',cursor:'pointer'}}   onClick={()=>Sendmail(data)}/>  <DownloadForOfflineIcon sx={{color:'darkgray',cursor:'pointer'}}   onClick={()=>DownloadInvoices(data)}/> {currentUser.data.role=='Admin'? <DeleteIcon sx={{color:'red',position:'relative',cursor:'pointer'}} onClick={()=>ViewDelete(data)}/>:null}</TD>
                     </TR> 
                         
                     
@@ -154,7 +155,7 @@ export const SeeAllClient = () => {
                     :null
                 }
             </Table>
-             
+           
         </Wrapper>
     </>
   )

@@ -88,8 +88,10 @@ border-top:1px solid gray;
 border-bottom:1px solid gray;
 `
 export const NavElement =  styled.div`
+cursor: pointer;
 &:hover{
     color: #E8604C
+    
 }
 `
 
