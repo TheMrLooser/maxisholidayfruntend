@@ -38,6 +38,17 @@ font-size:30px;
 color:#4A4958
 
 `
+export const LogoImgContainer = styled.div`
+width: 150px;
+height: 150px;
+border: 3px solid #E8604C;
+background-color:#E8604C ;
+border-radius: 50%;
+overflow: hidden;
+`
+export const LogoImg = styled.img`
+
+`
 export const Input = styled.input`
 width:100%;
 max-width:90%;

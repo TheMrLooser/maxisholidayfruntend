@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Account, Container, DropdownContainer, DropdownElement, Element, ElementWrapper, Logo, Wrapper } from '../styledComponents/NavBar'
 import {Link, useNavigate} from 'react-router-dom';
-import ExpandCircleDownIcon from '@mui/icons-material/ExpandCircleDown';
+// import ExpandCircleDownIcon from '@mui/icons-material/ExpandCircleDown';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import axios from 'axios'
 import logoImgPng from '../images/maxisLogo.png'
 
@@ -53,7 +55,7 @@ export const NavBar = () => {
                     {
                         user.role ==="Admin" ? 
                         <Element>
-                        <Element onClick={ControleDropDown_2}>Manage Employee <ExpandCircleDownIcon sx={{fontSize:'16px'}}/></Element>
+                        <Element onClick={ControleDropDown_2}>Manage Employee {openDropDown_2 ? <ExpandLessIcon sx={{fontSize:'20px'}}/> :<ExpandMoreIcon sx={{fontSize:'20px'}}/> }</Element>
                         {
                             openDropDown_2 ? <>
                             <DropdownContainer>
@@ -71,7 +73,7 @@ export const NavBar = () => {
                     <Link className='Link' to={'/register-new-client'}><Element>Register new client</Element></Link>
                     <Link className='Link' to={'/see-all-client'}><Element>See all client</Element></Link>
                     <Element>
-                        <Element onClick={ControleDropDown}>Section <ExpandCircleDownIcon sx={{fontSize:'16px'}}/></Element>
+                        <Element onClick={ControleDropDown}>Section{openDropDown ? <ExpandLessIcon sx={{fontSize:'20px'}}/> :<ExpandMoreIcon sx={{fontSize:'20px'}}/> }</Element>
                        {
                         openDropDown ? <>
                         <DropdownContainer>
@@ -84,7 +86,7 @@ export const NavBar = () => {
                        }
                     </Element>
                     <Element onClick={LogOut}>LogOut</Element>
-                    <Account>{user.name}</Account>
+                    <Account>{user.role}</Account>
                 </ElementWrapper>
             </Wrapper>
         </Container>

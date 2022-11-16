@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Container, Input, InputWrapper, Title, Wrapper } from '../styledComponents/Login'
+import { Button, Container, Input, InputWrapper, LogoImg, LogoImgContainer, Title, Wrapper } from '../styledComponents/Login'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useDispatch, useSelector } from 'react-redux'
 import { LogedInClientAction, LogedInEmployeeAction } from '../redux/actions/loginActions';
@@ -33,7 +33,8 @@ export const Login = () => {
         <Container>
             <Wrapper>
                 <Title>Login</Title>
-                <AccountCircleIcon sx={{fontSize: '200px',color:'#fbb03b'}}/>
+                {/* <AccountCircleIcon sx={{fontSize: '200px',color:'#fbb03b'}}/> */}
+                <LogoImgContainer><LogoImg src='https://maxisholiday.netlify.app/static/media/maxisLogo.e569bb686b8ef40b945f.png' width={'100%'} height={'100%'}/></LogoImgContainer>
                 {error ? <Status status={"fail"} Message={error?error.data:null}/> : null}
                 <InputWrapper>
                     UserId

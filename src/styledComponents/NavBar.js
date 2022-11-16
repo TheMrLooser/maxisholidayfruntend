@@ -17,7 +17,7 @@ max-width:98%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-
+padding: 10px 0px;
 `
 export const Logo = styled.img`
 
@@ -34,6 +34,7 @@ position:relative;
 display:flex;
 align-items:center;
 cursor:pointer;
+font-size: 18px;
 &:hover{
     color: #E8604C
 }
