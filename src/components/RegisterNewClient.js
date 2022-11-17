@@ -60,8 +60,11 @@ export const RegisterNewClient = () => {
         const [errorMessage,setErrorMessage] = useState("");
         const [STATUS,setSTATUS] = useState(false)
         const todaysDate = `${new Date().getDate()}-${new Date().getMonth()}-${new Date().getFullYear()}`
+        const [membershipId,setMembershipId] = useState("")
 
         const [showLoader,setShoLoader] = useState(false)
+
+        
         const register = async()=>{
                     setShoLoader(true)
                     const res = await axios.post('https://maxis-holiday.herokuapp.com/client/add-new-client',
@@ -69,7 +72,7 @@ export const RegisterNewClient = () => {
                         name,email,gender,phone,address,netAmount,state,city,DOB,
                         fathersName,mothersName,membershipYear,spouseName:spouse,firstChildName,firstChildDOB,secondChildDOB,secondChildName,
                         thirdChildDOB,thirdChildName,salesEmployeeId:currentUser.data.employeeId,AMC,adharCardNumber,remark,spouseDOB,marriageAnniversaryDate:MAD,membershipType,
-                        dateOfJoining:todaysDate,paidAmount,AMCStatus,PaidAMCAmount
+                        dateOfJoining:joiningDate?joiningDate:todaysDate,paidAmount,AMCStatus,PaidAMCAmount,clientId:membershipId
                     }
                     );
                     if(res.status===202){
@@ -221,6 +224,8 @@ export const RegisterNewClient = () => {
                     <Option value={'25 Years Titanium 1BR'}>25 Years Titanium 1BR</Option>
                 </Select>
                 </ElementWrapper>
+                <ElementWrapper><Title>Joining Date</Title><Input  type={'date'} placeholder='Enter joining date' onChange={(e)=>setJoiningdate(e.target.value)}/></ElementWrapper>
+                <ElementWrapper><Title>Membership Id</Title><Input placeholder='Enter Membership Id' onChange={(e)=>setMembershipId(e.target.value)}/></ElementWrapper>
                  
             </BodyWrapper>
             <Button onClick={register}>{showLoader ? <Loader/> : "Register"}</Button>
