@@ -5,7 +5,7 @@ import { ClientDetailWrapper, Table, TD, TH, TR, Wrapper } from '../styledCompon
 import html2pdf from 'html2pdf.js'
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { useSelector } from 'react-redux'
-
+import logoPng from '../images/maxisLogo.png'
 
 export const DownloadInvoice = ({data , setDownloadPart}) => {
     const componentRef = useRef()
@@ -28,7 +28,7 @@ export const DownloadInvoice = ({data , setDownloadPart}) => {
             <Button onClick={download} style={{marginTop:'10px'}} >Download Invoice</Button>
             <Wrapper style={{backgroundColor:'white',padding:'20px',maxWidth:'95%'}} ref={componentRef}>
                 <HeaderWrapper>
-                    <Logo src='https://maxisholidays.in/wp-content/uploads/2022/07/WhatsApp-Image-2022-07-24-at-10.41.01-AM-1.jpeg'  width={'20%'} height={'20%'}/>
+                    <Logo src={logoPng}  width={'20%'} height={'20%'}/>
                     <DetailContainer>
                         <ElementWrapper><Title>Invoice No. : </Title><Element>{data.clientId}</Element></ElementWrapper>
                         <ElementWrapper><Title>Date : </Title><Element>{todaysDate}</Element></ElementWrapper>
