@@ -91,7 +91,7 @@ export const RegisterNewClient = () => {
                         
                         });
                         
-
+ 
                     }
             
                     setShoLoader(false)
@@ -135,9 +135,9 @@ export const RegisterNewClient = () => {
             <Heading>Register New Client</Heading>
             {STATUS? <Status_2  status={status} Message={Message} errorMessage={errorMessage}/> : null}
             <BodyWrapper>
-                <ElementWrapper><Title>Name*</Title><Input required placeholder='Enter Name' onChange={(e)=>setName(e.target.value)}/></ElementWrapper>
-                <ElementWrapper><Title>Email*</Title><Input required placeholder='Enter Email' onChange={(e)=>setEmail(e.target.value)}/></ElementWrapper>
-                <ElementWrapper><Title>Phone*</Title><Input required placeholder='Enter Phone Number' onChange={(e)=>setPhone(e.target.value)}/></ElementWrapper>
+                <ElementWrapper><Title>Name*</Title><Input  placeholder='Enter Name' onChange={(e)=>setName(e.target.value)}/></ElementWrapper>
+                <ElementWrapper><Title>Email*</Title><Input  placeholder='Enter Email' onChange={(e)=>setEmail(e.target.value)}/></ElementWrapper>
+                <ElementWrapper><Title>Phone*</Title><Input  placeholder='Enter Phone Number' onChange={(e)=>setPhone(e.target.value)}/></ElementWrapper>
                 <ElementWrapper><Title>Gender*</Title> 
                     <Select onChange={(e)=>setGender(e.target.value)}>
                         <Option>Select Gender</Option>
@@ -148,9 +148,9 @@ export const RegisterNewClient = () => {
                     </Select>
                 </ElementWrapper>
                 
-                <ElementWrapper><Title>Address*</Title><TextArea required placeholder='Enter Address' onChange={(e)=>setAddress(e.target.value)}/></ElementWrapper>
-                <ElementWrapper><Title>Membership Amount*</Title><Input required placeholder='Enter Membership Amount' onChange={(e)=>setNetAmount(e.target.value)}/></ElementWrapper>
-                <ElementWrapper><Title>Paid Amount*</Title><Input required placeholder='Enter Paid Amount' onChange={(e)=>setPaidAmount(e.target.value)}/></ElementWrapper>
+                <ElementWrapper><Title>Address*</Title><TextArea  placeholder='Enter Address' onChange={(e)=>setAddress(e.target.value)}/></ElementWrapper>
+                <ElementWrapper><Title>Membership Amount*</Title><Input  placeholder='Enter Membership Amount' onChange={(e)=>setNetAmount(e.target.value)}/></ElementWrapper>
+                <ElementWrapper><Title>Paid Amount*</Title><Input  placeholder='Enter Paid Amount' onChange={(e)=>setPaidAmount(e.target.value)}/></ElementWrapper>
                 
                 <ElementWrapper><Title>State</Title>
                 <Select onChange={(e)=>handleState(e.target.value)} onClick={handleCountries}>
@@ -167,9 +167,9 @@ export const RegisterNewClient = () => {
                 </Select>
                 </ElementWrapper>
                 
-                <ElementWrapper><Title>DOB*</Title><Input type={'date'} required placeholder='Enter DOB' onChange={(e)=>setDOB(e.target.value)}/></ElementWrapper>
-                <ElementWrapper><Title>Father's Name*</Title><Input required placeholder='Enter Fathers Name' onChange={(e)=>setFathersName(e.target.value)}/></ElementWrapper>
-                <ElementWrapper><Title>Mothers's Name*</Title><Input required placeholder='Enter Mothers Name' onChange={(e)=>setMothersName(e.target.value)}/></ElementWrapper>
+                <ElementWrapper><Title>DOB*</Title><Input type={'date'}  placeholder='Enter DOB' onChange={(e)=>setDOB(e.target.value)}/></ElementWrapper>
+                <ElementWrapper><Title>Father's Name*</Title><Input  placeholder='Enter Fathers Name' onChange={(e)=>setFathersName(e.target.value)}/></ElementWrapper>
+                <ElementWrapper><Title>Mothers's Name*</Title><Input  placeholder='Enter Mothers Name' onChange={(e)=>setMothersName(e.target.value)}/></ElementWrapper>
                 <ElementWrapper><Title>Spouse Name</Title><Input   placeholder='Enter Spouse Name' onChange={(e)=>setSpouseName(e.target.value)}/></ElementWrapper>
                 <ElementWrapper><Title>Spouse DOB</Title><Input  type={'date'} placeholder='Enter Spouse DOB' onChange={(e)=>setSpouseDOB(e.target.value)}/></ElementWrapper>
                 <ElementWrapper><Title>Marriage Anniversary Date</Title><Input type={'date'}  placeholder='Enter Marriage Anniversary Date' onChange={(e)=>setMAD(e.target.value)}/></ElementWrapper>
@@ -179,20 +179,21 @@ export const RegisterNewClient = () => {
                 <ElementWrapper><Title>Second Child DOB</Title><Input  type={'date'} placeholder='Enter Second Child DOB' onChange={(e)=>setSecondChildDOB(e.target.value)}/></ElementWrapper>
                 <ElementWrapper><Title>Third Child Name</Title><Input   placeholder='Enter Third Child Name' onChange={(e)=>setThirdChildName(e.target.value)}/></ElementWrapper>
                 <ElementWrapper><Title>Third Child DOB</Title><Input type={'date'}  placeholder='Enter Third Child DOB' onChange={(e)=>setThirdChildDOB(e.target.value)}/></ElementWrapper>
-                <ElementWrapper><Title>AMC</Title><Input required placeholder='Enter AMC' onChange={(e)=>setAMC(e.target.value)}/></ElementWrapper>
+                <ElementWrapper><Title>AMC</Title><Input  placeholder='Enter AMC' onChange={(e)=>setAMC(e.target.value)}/></ElementWrapper>
                 <ElementWrapper><Title>AMC Status</Title> 
                     <Select onChange={(e)=>setAMCStatus(e.target.value)}>
                         <Option>Select AMC Status</Option>
                         <Option value={'Paid'}>Paid</Option>
                         <Option value={'Unpaid'}>Unpaid </Option>
                         <Option value={'Due'}>Due </Option>
+                        <Option value={'NA'}>NA </Option>
                     
                     </Select>
                 </ElementWrapper>
                 <ElementWrapper><Title>Paid AMC Amount</Title><Input   placeholder='Enter Paid AMC Amount' onChange={(e)=>setPaidAMCAmount(e.target.value)}/></ElementWrapper>
                 <ElementWrapper><Title>Remark</Title><TextArea   placeholder='Enter Remark' onChange={(e)=>setRemark(e.target.value)}/></ElementWrapper>
                 <ElementWrapper><Title>Adhar Card NO.</Title><Input   placeholder='Enter Adhsr card no.' onChange={(e)=>setAdharCardNumber(e.target.value)}/></ElementWrapper>
-                {/* <ElementWrapper><Title>MembershipYear</Title><Input required placeholder='Enter MembershipYear' onChange={(e)=>setMembershipYear(e.target.value)}/></ElementWrapper> */}
+                {/* <ElementWrapper><Title>MembershipYear</Title><Input  placeholder='Enter MembershipYear' onChange={(e)=>setMembershipYear(e.target.value)}/></ElementWrapper> */}
                
                 <ElementWrapper><Title>Membership Year</Title>
                 <Select onChange={(e)=>setMembershipYear(e.target.value)}>
