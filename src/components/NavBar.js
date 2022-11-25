@@ -50,7 +50,7 @@ export const NavBar = () => {
      <>
         <Container>
             <Wrapper> 
-                <Logo src= {logoImgPng} width={'10%'} height={'10%'}/>
+                <Link to={'/'} className="Link" style={{width:'10%',height:'10%'}}><Logo src= {logoImgPng} width={'100%'} height={'100%'}/></Link>
                 <ElementWrapper>
                     {
                         user.role ==="Admin" ? 

@@ -45,7 +45,7 @@ export const DueAmc = () => {
         fetchAllClient() 
     },[searchText])
  
-    
+     
     const Sendmail = (data)=>{
         setData(data)
          setOpeMailPart(true)

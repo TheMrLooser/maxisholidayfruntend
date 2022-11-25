@@ -23,7 +23,7 @@ export const Statistics = () => {
     ]
     const [Clients,setClients]  = useState(null)
     const year = new Date().getFullYear()
-    const date = `${month}-${year}`
+    const date = `${year}-${month}`
 
     useEffect(()=>{
         var fetchAllClient = async()=>{
@@ -34,7 +34,8 @@ export const Statistics = () => {
         fetchAllClient()
     },[ month])
 
-     
+    
+    console.log(Clients ? Clients.map((data,index)=>data.dateOfJoining.includes(month)):null)
 
 
   return (
@@ -56,8 +57,8 @@ export const Statistics = () => {
                             <TH>City</TH>
                         </TR>
                         {Clients ? "":<div style={{width:'99%',height:'50px',display:'flex',alignItems:'center',justifyContent:'center',position:'absolute'}}><Loader/></div>}
-
-                        {Clients ? Clients.map((data,index)=>data.dateOfJoining.includes(date) ?
+                        
+                        {Clients ? Clients.map((data,index)=>data.dateOfJoining.includes(date)?
                             <>
                             <TR key={index}>
                                 <TD>{data.dateOfJoining}</TD>
@@ -67,7 +68,7 @@ export const Statistics = () => {
                            {
                             data.usingHolidayPackage.map((Data_2,Index_2)=>
                             
-                            <TR key={Index_2}>
+                            <TR key={Index_2}> 
                                 <TD>{Data_2.BookingDate}</TD>
                                 <TD>{(Data_2.OneDayPrice)*(parseInt(Data_2.Days)+parseInt(Data_2.Nights))}</TD>
                             </TR>

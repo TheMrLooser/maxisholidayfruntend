@@ -185,7 +185,7 @@ export const RegisterNewClient = () => {
                         <Option>Select AMC Status</Option>
                         <Option value={'Paid'}>Paid</Option>
                         <Option value={'Unpaid'}>Unpaid </Option>
-                        <Option value={'Due'}>Due </Option>
+                        <Option value={'Due'}>Due </Option> 
                         <Option value={'NA'}>NA </Option>
                     
                     </Select>
