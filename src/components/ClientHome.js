@@ -28,7 +28,7 @@ export const ClientHome = () => {
         <Header>
         
             <Logo><PersonIcon sx={{position: 'relative',fontSize:'50px' , color:'red'}}/> </Logo>
-            <UserName>Ankush</UserName>
+            <UserName>{user.name}</UserName> 
             <NavContainer>
              <Link to={'/'} className="Link"><NavElement>Details</NavElement></Link>
               <Link to={'/holidays-taken'} className="Link"> <NavElement>Holidays</NavElement></Link>
