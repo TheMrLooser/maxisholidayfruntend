@@ -13,13 +13,13 @@ export const Home = () => {
     const {loading,error,currentUser} = useSelector(state => state.currentUser)
     const dispatch = useDispatch()
 
-    useEffect(()=>{
-      const autoLogin = async()=>{
-        axios.defaults.withCredentials = true
-          await  LogedInWithCookieUserAction(dispatch)
-      }
-      autoLogin() 
-  },[ ]) 
+  //   useEffect(()=>{
+  //     const autoLogin = async()=>{
+  //       axios.defaults.withCredentials = true
+  //         await  LogedInWithCookieUserAction(dispatch)
+  //     }
+  //     autoLogin() 
+  // },[ ]) 
     
   return (
     <>  <BrowserRouter>
