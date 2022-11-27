@@ -4,6 +4,9 @@ import { Input } from '../styledComponents/Login';
 import axios from 'axios';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import Loader from '../loder/loder';
+import {HOST_NAME} from '../AWS_server_IP'
+
+
 
 const filterdata = (user,searchText)=>{
     if (!searchText) {
@@ -25,7 +28,7 @@ export const ViewHolidayRequest = () => {
     const [requestStatus,setRequestStatus] = useState("Pending")
     useEffect(()=>{
         var fetchAllClient = async()=>{
-            const res = await axios.get(`https://maxis-holiday.herokuapp.com/holidays/get-all-request/${requestStatus}`)
+            const res = await axios.get(`${HOST_NAME}/holidays/get-all-request/${requestStatus}`)
             
             setRequests(filterdata(res.data,searchText))
         }
@@ -48,7 +51,7 @@ export const ViewHolidayRequest = () => {
     const MarkDone = async(data)=>{
         const status = 'Done';
         const id = data._id
-       const res =  await axios.put('https://maxis-holiday.herokuapp.com/holidays/update-request',{status,id});
+       const res =  await axios.put(`${HOST_NAME}/holidays/update-request`,{status,id});
        console.log(res.data)
         window.location.reload(true)
     }

@@ -8,14 +8,15 @@ import { HolidaysTaken } from './HolidaysTaken';
 import { RequestHoliday } from './RequestHoliday';
 import { DownloadInvoice } from './DownloadInvoice';
 import axios from 'axios'; 
-
+import {HOST_NAME} from '../AWS_server_IP'
 
 export const ClientHome = () => {
     const {loading, error,currentUser} = useSelector(state=>state.currentUser)
     const user = currentUser.data ? currentUser.data : null
     
-    const LogOut = async()=>{
-      const res =   await axios.get('https://maxis-holiday.herokuapp.com/client/logout')
+ 
+const LogOut = async()=>{
+      const res =   await axios.get(`${HOST_NAME}/client/logout`)
         console.log(res.data)
         window.location.reload(true)
     }

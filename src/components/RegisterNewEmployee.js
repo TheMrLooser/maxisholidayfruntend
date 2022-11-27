@@ -5,6 +5,7 @@ import {Button , Input} from "../styledComponents/Login"
 import { BodyWrapper, ElementWrapper, Heading, Title } from '../styledComponents/MakeEntry'
 import { TextArea, Wrapper } from '../styledComponents/RegisterNewClient'
 import {  Status_2 } from './Status'
+import {HOST_NAME} from '../AWS_server_IP'
 
 
 
@@ -30,7 +31,7 @@ export const RegisterNewEmployee = () => {
         const [showLoader,setShoLoader] = useState(false)
         const register = async()=>{
                     setShoLoader(true)
-                    const res = await axios.post('https://maxis-holiday.herokuapp.com/employee/add-new-employee',
+                    const res = await axios.post(`${HOST_NAME}/employee/add-new-employee`,
                     {
                         name,email,gender,phone,address,state,city,DOB,adharCardNumber 
                     }

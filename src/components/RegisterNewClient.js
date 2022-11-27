@@ -7,6 +7,7 @@ import { TextArea, Wrapper } from '../styledComponents/RegisterNewClient'
 import { Status_2 } from './Status'
 import styled from 'styled-components'
 import Loader from '../loder/loder'
+import {HOST_NAME} from '../AWS_server_IP'
 
 
 
@@ -61,21 +62,22 @@ export const RegisterNewClient = () => {
         const [STATUS,setSTATUS] = useState(false)
         const todaysDate = `${new Date().getDate()}-${new Date().getMonth()}-${new Date().getFullYear()}`
         const [membershipId,setMembershipId] = useState("")
-
+        const [noOfDays,setNoOfDays] = useState(0);
+        const [noOfNight,setNoOfNight] = useState(0);
         const [showLoader,setShoLoader] = useState(false)
 
         
         const register = async()=>{
                     setShoLoader(true)
-                    const res = await axios.post('https://maxis-holiday.herokuapp.com/client/add-new-client',
+                    const res = await axios.post(`${HOST_NAME}/client/add-new-client`,
                     {
                         name,email,gender,phone,address,netAmount,state,city,DOB,
                         fathersName,mothersName,membershipYear,spouseName:spouse,firstChildName,firstChildDOB,secondChildDOB,secondChildName,
                         thirdChildDOB,thirdChildName,salesEmployeeId:currentUser.data.employeeId,AMC,adharCardNumber,remark,spouseDOB,marriageAnniversaryDate:MAD,membershipType,
-                        dateOfJoining:joiningDate?joiningDate:todaysDate,paidAmount,AMCStatus,PaidAMCAmount,clientId:membershipId
+                        dateOfJoining:joiningDate?joiningDate:todaysDate,paidAmount,AMCStatus,PaidAMCAmount,clientId:membershipId,totalAllowedDays:noOfDays,totalAllowedNights:noOfNight
                     }
                     );
-                    if(res.status===202){
+                    if(res.status===202){ 
                         setStatus("fail")
                         setErrorMessage(res.data)
                         setSTATUS(true)
@@ -84,10 +86,10 @@ export const RegisterNewClient = () => {
                         setMeaasge(res.data)
                         setStatus("success") 
                         setSTATUS(true)
-                        await axios.post('https://maxis-holiday.herokuapp.com/employee/send-mail/default',{to:email,
+                        await axios.post(`${HOST_NAME}/employee/send-mail/default`,{to:email,
                          clientId:res.data.clientId,name,email,phone,netAmount, 
                          salesEmployeeId:currentUser.data.employeeId,AMC,membershipType,membershipYear,
-                         dateOfJoining:todaysDate
+                         dateOfJoining:todaysDate,noOfDays,noOfNight
                         
                         });
                         
@@ -106,7 +108,7 @@ export const RegisterNewClient = () => {
                 // const [salectCity,setSalectCity] = useState()
                 useEffect(()=>{
                     const getContryState_city = async ()=>{
-                        var res = await axios.get("https://maxis-holiday.herokuapp.com/api/countries");
+                        var res = await axios.get(`${HOST_NAME}/api/countries`);
                             setData(res.data) 
                     }
                     getContryState_city()
@@ -225,6 +227,8 @@ export const RegisterNewClient = () => {
                     <Option value={'25 Years Titanium 1BR'}>25 Years Titanium 1BR</Option>
                 </Select>
                 </ElementWrapper>
+                <ElementWrapper><Title>No Of Days</Title><Input  type={'number'} placeholder='Enter no. of days' onChange={(e)=>setNoOfDays(e.target.value)}/></ElementWrapper>
+                <ElementWrapper><Title>No of Night</Title><Input  type={'number'} placeholder='Enter no. of night' onChange={(e)=>setNoOfNight(e.target.value)}/></ElementWrapper>
                 <ElementWrapper><Title>Joining Date</Title><Input  type={'date'} placeholder='Enter joining date' onChange={(e)=>setJoiningdate(e.target.value)}/></ElementWrapper>
                 <ElementWrapper><Title>Membership Id</Title><Input placeholder='Enter Membership Id' onChange={(e)=>setMembershipId(e.target.value)}/></ElementWrapper>
                  

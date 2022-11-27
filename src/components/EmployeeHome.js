@@ -13,6 +13,7 @@ import { SendMail } from './SendMail'
 import { Statistics } from './Statistics'
 import { ViewHolidayRequest } from './ViewHolidayRequest'
 
+
 export const EmployeeHome = () => {
   return (
     <>
@@ -29,7 +30,7 @@ export const EmployeeHome = () => {
                     <Route path='/send-email' element={<SendMail/>}/>
                     <Route path='/dueamount' element={<DueAmount/>}/>
                     <Route path='/statistics' element={<Statistics/>}/>
-                    <Route path='/due-amc' element={< DueAmc/>}/>
+                    <Route path='/due-amc' element={<DueAmc/>}/>
                 </Routes>
 
                 

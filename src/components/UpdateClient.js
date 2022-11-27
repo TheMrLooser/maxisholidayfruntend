@@ -11,16 +11,18 @@ import axios from 'axios'
 import Loader from '../loder/loder'
 import {   NavContainer, NavElement } from '../styledComponents/ClientHome'
 import { Link } from 'react-router-dom'
+import {HOST_NAME} from '../AWS_server_IP'
 
 
 
 const UpdateContainer = styled.div`
 width:100%;
-max-width:600px;
+max-width:90%;
 display:flex;
 flex-wrap:wrap;
 align-items:center;
 justify-content:center;
+gap:20px;
 @media only screen and (max-width:500px){
 max-width:100%;
 }
@@ -50,7 +52,19 @@ export const UpdateClient = ({setOpeUpdatelPart , data}) => {
     const [city,setCity] = useState(data.city)
     const [DMA,setDMA] = useState(0)
 
-   
+    const [DOB,setDOB] = useState(data.DOB)
+    const [spouseDOB,setSpouseDOB] = useState(data.spouseDOB)
+    const [MAD,setMAD] = useState(data.marriageAnniversaryDate)
+    const [fathersName,setFathersName] = useState(data.fathersName)
+    const [mothersName,setMothersName] = useState(data.mothersName)
+    const [spouse,setSpouseName] = useState(data.spouseName)
+    const [firstChildName,setFirstChildName] = useState(data.firstChildName)
+    const [firstChildDOB,setFirstChildDOB] = useState(data.firstChildDOB)
+    const [secondChildName,setSecondChildName] = useState(data.secondChildName)
+    const [secondChildDOB,setSecondChildDOB] = useState(data.secondChildDOB)
+    const [thirdChildName,setThirdChildName] = useState(data.thirdChildName)
+    const [thirdChildDOB,setThirdChildDOB] = useState(data.thirdChildDOB)
+    const [remark,setRemark] = useState("")
      
     const {currentUser} = useSelector(state=>state.currentUser)
     const [status,setStatus] = useState("");
@@ -64,7 +78,7 @@ export const UpdateClient = ({setOpeUpdatelPart , data}) => {
 
     const Update = async()=>{
       setShoLoader(true)
-        const res  = await axios.put('https://maxis-holiday.herokuapp.com/client/update-client',{clientId:data.clientId, name,email,gender,phone,address,netAmount,state,city,DMA});
+        const res  = await axios.put(`${HOST_NAME}/client/update-client`,{clientId:data.clientId, name,email,gender,phone,address,netAmount,state,city,DMA,spouseName:spouse,spouseDOB,DOB,marriageAnniversaryDate:MAD,fathersName,mothersName,firstChildName,firstChildDOB,secondChildName,secondChildDOB,thirdChildName,thirdChildDOB,remark});
 
         setMessage(res.data)
         if(res.status==202){
@@ -78,7 +92,7 @@ export const UpdateClient = ({setOpeUpdatelPart , data}) => {
     }
     const UpdateAMC = async()=>{
         setShoLoader(true)
-        const res  = await axios.put('https://maxis-holiday.herokuapp.com/client/update-client',{clientId:data.clientId, AMCYear, AmcAmount});
+        const res  = await axios.put(`${HOST_NAME}/client/update-client`,{clientId:data.clientId, AMCYear, AmcAmount});
 
         setMessage(res.data)
         
@@ -96,7 +110,7 @@ export const UpdateClient = ({setOpeUpdatelPart , data}) => {
     const [membershipType,setMembershipType] = useState("")
     const UpgradePackage= async()=>{
       setShoLoader(true)
-      const res  = await axios.put('https://maxis-holiday.herokuapp.com/client/update-client',{clientId:data.clientId, membershipType});
+      const res  = await axios.put(`${HOST_NAME}/client/update-client`,{clientId:data.clientId, membershipType});
         setMessage(res.data)
         if(res.status==202){
             setStatus('fail')
@@ -112,7 +126,7 @@ export const UpdateClient = ({setOpeUpdatelPart , data}) => {
     const [noOfNights,setNoOfNights] = useState()
     const UpgradeDays_Nights= async()=>{
       setShoLoader(true) 
-      const res  = await axios.put('https://maxis-holiday.herokuapp.com/client/update-client',{clientId:data.clientId, noOfNights,noOfdays});
+      const res  = await axios.put(`${HOST_NAME}/client/update-client`,{clientId:data.clientId, noOfNights,noOfdays});
         setMessage(res.data)
         if(res.status==202){
             setStatus('fail')
@@ -185,7 +199,20 @@ export const UpdateClient = ({setOpeUpdatelPart , data}) => {
                   <ElementWrapper><Title style={{color:'gray'}}>State*</Title><Input required placeholder='Enter State' onChange={(e)=>setState(e.target.value)}/></ElementWrapper>
                   <ElementWrapper><Title style={{color:'gray'}}>City*</Title><Input required placeholder='Enter City' onChange={(e)=>setCity(e.target.value)}/></ElementWrapper>
                   <ElementWrapper><Title style={{color:'gray'}}>Enter New Paid Membership Amount</Title><Input required placeholder='Enter Paid Amount' onChange={(e)=>setDMA(e.target.value)}/></ElementWrapper>
-               
+                  <ElementWrapper><Title style={{color:'gray'}}>DOB*</Title><Input type={'date'}  placeholder='Enter DOB' onChange={(e)=>setDOB(e.target.value)}/></ElementWrapper>
+                  <ElementWrapper><Title style={{color:'gray'}}>Father's Name*</Title><Input  placeholder='Enter Fathers Name' onChange={(e)=>setFathersName(e.target.value)}/></ElementWrapper>
+                  <ElementWrapper><Title style={{color:'gray'}}>Mothers's Name*</Title><Input  placeholder='Enter Mothers Name' onChange={(e)=>setMothersName(e.target.value)}/></ElementWrapper>
+                  <ElementWrapper><Title style={{color:'gray'}}>Spouse Name</Title><Input   placeholder='Enter Spouse Name' onChange={(e)=>setSpouseName(e.target.value)}/></ElementWrapper>
+                  <ElementWrapper><Title style={{color:'gray'}}>Spouse DOB</Title><Input  type={'date'} placeholder='Enter Spouse DOB' onChange={(e)=>setSpouseDOB(e.target.value)}/></ElementWrapper>
+                  <ElementWrapper><Title style={{color:'gray'}}>Marriage Anniversary Date</Title><Input type={'date'}  placeholder='Enter Marriage Anniversary Date' onChange={(e)=>setMAD(e.target.value)}/></ElementWrapper>
+                  <ElementWrapper><Title style={{color:'gray'}}>First Child Name</Title><Input   placeholder='Enter First Child Name' onChange={(e)=>setFirstChildName(e.target.value)}/></ElementWrapper>
+                  <ElementWrapper><Title style={{color:'gray'}}>First Child DOB</Title><Input  type={'date'} placeholder='Enter First Child DOB' onChange={(e)=>setFirstChildDOB(e.target.value)}/></ElementWrapper>
+                  <ElementWrapper><Title style={{color:'gray'}}>Second Child Name</Title><Input   placeholder='Enter Second Child Name' onChange={(e)=>setSecondChildName(e.target.value)}/></ElementWrapper>
+                  <ElementWrapper><Title style={{color:'gray'}}>Second Child DOB</Title><Input  type={'date'} placeholder='Enter Second Child DOB' onChange={(e)=>setSecondChildDOB(e.target.value)}/></ElementWrapper>
+                  <ElementWrapper><Title style={{color:'gray'}}>Third Child Name</Title><Input   placeholder='Enter Third Child Name' onChange={(e)=>setThirdChildName(e.target.value)}/></ElementWrapper>
+                  <ElementWrapper><Title style={{color:'gray'}}>Third Child DOB</Title><Input type={'date'}  placeholder='Enter Third Child DOB' onChange={(e)=>setThirdChildDOB(e.target.value)}/></ElementWrapper>
+                  <ElementWrapper><Title style={{color:'gray'}}>Remark</Title><TextArea   placeholder='Enter Remark' onChange={(e)=>setRemark(e.target.value)}/></ElementWrapper>
+                  
               </UpdateContainer>
               <Button onClick={Update}>{showLoader ? <Loader/> : "Update"}</Button>
                 </>

@@ -8,6 +8,7 @@ import { Heading } from '../styledComponents/MakeEntry';
 import { Input } from '../styledComponents/Login';
 import { SendMail } from './SendMail';
 import Loader from '../loder/loder';
+import {HOST_NAME} from '../AWS_server_IP'
 
 
 
@@ -38,7 +39,7 @@ export const DueAmc = () => {
     const [searchText,setSearchtext] = useState("")
     useEffect(()=>{
         var fetchAllClient = async()=>{
-            const res = await axios.get('https://maxis-holiday.herokuapp.com/client/get-all-due-amc-client')
+            const res = await axios.get(`${HOST_NAME}/client/get-all-due-amc-client`)
             
             setClients(filterdata(res.data,searchText))
         }

@@ -6,6 +6,7 @@ import {  Heading, Title } from '../styledComponents/MakeEntry'
 import { TextArea } from '../styledComponents/RegisterNewClient'
 import { Wrapper , Container ,ElementWrapper, Notify} from '../styledComponents/SendMail'
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import {HOST_NAME} from '../AWS_server_IP'
 
 
 
@@ -18,7 +19,7 @@ export const SendMail = ({data , setOpeMailPart}) => {
     const [showLoader,setShoLoader] = useState(false)
     const sendMail = async ()=>{
         setShoLoader(true)
-        const res = await axios.post('https://maxis-holiday.herokuapp.com/employee/send-mail',{subject,message,to:data.email});
+        const res = await axios.post(`${HOST_NAME}/employee/send-mail`,{subject,message,to:data.email});
         if(res.status===200){
             setResMessage(res.data)
             setStatus(true)
@@ -29,7 +30,7 @@ export const SendMail = ({data , setOpeMailPart}) => {
 
     }
  
-  return (
+  return ( 
     <>
         <Container>
             <Wrapper> 
@@ -37,8 +38,8 @@ export const SendMail = ({data , setOpeMailPart}) => {
                 <Heading>Send Email</Heading>
                 {Status ? <Notify>{resMessage}</Notify> : null}
                 <ElementWrapper><Title>To</Title><Input value={data.email}/></ElementWrapper>
-                <ElementWrapper><Title>Subject</Title><Input placeholder='Enter Subject' onChange={(e)=>setSubject(e.target.value)}/></ElementWrapper>
-                <ElementWrapper><Title>Body</Title><TextArea style={{minHeight:'200px'}} placeholder=" Enter Message Here.." onChange={(e)=>setMessage(e.target.value)}/></ElementWrapper>
+                {/* <ElementWrapper><Title>Subject</Title><Input placeholder='Enter Subject' onChange={(e)=>setSubject(e.target.value)}/></ElementWrapper> */}
+                {/* <ElementWrapper><Title>Body</Title><TextArea style={{minHeight:'200px'}} placeholder=" Enter Message Here.." onChange={(e)=>setMessage(e.target.value)}/></ElementWrapper> */}
                 <Button onClick={sendMail}>{showLoader?<Loader/>:"Send"}</Button>
             </Wrapper>
         </Container>

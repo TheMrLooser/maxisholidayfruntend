@@ -7,6 +7,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import axios from 'axios'
 import logoImgPng from '../images/maxisLogo.png'
+import {HOST_NAME} from '../AWS_server_IP'
 
 export const NavBar = () => {
     const {loading , error , currentUser} = useSelector(state=>state.currentUser)
@@ -33,14 +34,14 @@ export const NavBar = () => {
     }
 
     const LogOut = async()=>{
-        await axios.get('https://maxis-holiday.herokuapp.com/client/logout')
+        await axios.get(`${HOST_NAME}/client/logout`)
         window.location.reload(true)
     }
 
     const [requests,setRequest] = useState(0);
     useEffect(()=>{
         const fetchAllRequests = async()=>{
-            const res = await axios.get('https://maxis-holiday.herokuapp.com/holidays/get-all-request/Pending')
+            const res = await axios.get(`${HOST_NAME}/holidays/get-all-request/Pending`)
              setRequest(res.data.length)
         }
         fetchAllRequests()

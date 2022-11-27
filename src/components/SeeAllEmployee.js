@@ -8,6 +8,7 @@ import { Heading } from '../styledComponents/MakeEntry';
 import { UpdateClient } from './UpdateClient';
 import { Input } from '../styledComponents/Login';
 import Loader from '../loder/loder';
+import {HOST_NAME} from '../AWS_server_IP'
 
 
 
@@ -39,12 +40,18 @@ export const SeeAllEmployee = () => {
     const [searchText,setSearchtext] = useState("")
     useEffect(()=>{
         var fetchAllClient = async()=>{
-            const res = await axios.get('https://maxis-holiday.herokuapp.com/employee/get-all-employee')
+            const res = await axios.get(`${HOST_NAME}/employee/get-all-employee`)
             
             setClients(filterdata(res.data,searchText))
         }
         fetchAllClient()
     },[searchText])
+
+    var fetchAllClient = async()=>{
+        const res = await axios.get(`${HOST_NAME}/employee/get-all-employee`)
+        
+        setClients(filterdata(res.data,searchText))
+    }
 
     const ViewDetail = (data)=>{
 
@@ -54,8 +61,10 @@ export const SeeAllEmployee = () => {
     const DeleteEmployee = async()=>{
          const employeeId = data.employeeId
          axios.defaults.withCredentials = true
-        const res =  await axios.delete(`https://maxis-holiday.herokuapp.com/employee/delete-employee/${employeeId}`)
-         window.location.reload(true)
+        await axios.delete(`${HOST_NAME}/employee/delete-employee/${employeeId}`)
+        fetchAllClient()
+        setOpenDetailPart(false)
+
     }
 
  

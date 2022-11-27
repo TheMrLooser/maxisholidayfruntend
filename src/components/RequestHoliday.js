@@ -4,6 +4,7 @@ import {Button , Input} from "../styledComponents/Login"
 import axios from 'axios';
 import { Status } from './Status'
 import Loader from '../loder/loder';
+import {HOST_NAME} from '../AWS_server_IP'
 
 
 export const RequestHoliday = ({currentUser}) => {
@@ -21,7 +22,7 @@ export const RequestHoliday = ({currentUser}) => {
     const [showLoader,setShoLoader] = useState(false)
     const SendRequest = async()=>{
         setShoLoader(true)
-       const res =  await axios.post('https://maxis-holiday.herokuapp.com/holidays/create-request',{
+       const res =  await axios.post(`${HOST_NAME}/holidays/create-request`,{
             name:currentUser.name,
             email:currentUser.email,
             phone:currentUser.phone,

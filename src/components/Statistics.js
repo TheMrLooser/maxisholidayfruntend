@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Loader from '../loder/loder'
 import { Table, TD, TH, TR } from '../styledComponents/SeeAllClient'
 import { Heading, InsideWrapper, Wrapper ,Select ,Option, ReportContainer } from '../styledComponents/Statistics'
+import {HOST_NAME} from '../AWS_server_IP'
 
 export const Statistics = () => {
     const [month,setMonth] = useState("")
@@ -27,7 +28,7 @@ export const Statistics = () => {
 
     useEffect(()=>{
         var fetchAllClient = async()=>{
-            const res = await axios.get('https://maxis-holiday.herokuapp.com/client/get-all-client')
+            const res = await axios.get(`${HOST_NAME}/client/get-all-client`)
             
             setClients(res.data)
         }

@@ -16,6 +16,7 @@ import { DownloadInvoice } from './DownloadInvoice';
 import { useSelector } from 'react-redux';
 import Loader from '../loder/loder';
 import { Link, Route, Routes } from 'react-router-dom';
+import {HOST_NAME} from '../AWS_server_IP'
 
 
 
@@ -51,12 +52,19 @@ export const SeeAllClient = () => {
 
     useEffect(()=>{
         var fetchAllClient = async()=>{
-            const res = await axios.get('https://maxis-holiday.herokuapp.com/client/get-all-client')
+            const res = await axios.get(`${HOST_NAME}/client/get-all-client`)
             
             setClients(filterdata(res.data,searchText))
         }
         fetchAllClient()
     },[searchText])
+
+    var fetchAllClient = async()=>{
+        const res = await axios.get(`${HOST_NAME}/client/get-all-client`)
+        
+        setClients(filterdata(res.data,searchText))
+    }
+    
 
     const ViewDetail = (data)=>{
 
@@ -65,7 +73,7 @@ export const SeeAllClient = () => {
     }
     const VisitUpdateSec = (data)=>{
         setData(data)
-        setOpeUpdatelPart(true)
+        setOpeUpdatelPart(true) 
     }
     const Sendmail = (data)=>{
         setData(data)
@@ -85,8 +93,9 @@ export const SeeAllClient = () => {
     const DeleteEmployee = async()=>{
          const clientId = data.clientId
          axios.defaults.withCredentials = true
-         await axios.delete(`https://maxis-holiday.herokuapp.com/client/delete-client/${clientId}`)
-         window.location.reload(true)
+         await axios.delete(`${HOST_NAME}/client/delete-client/${clientId}`)
+         fetchAllClient()
+         setOpenDeletePart(false)
     }
  
 
@@ -109,7 +118,8 @@ export const SeeAllClient = () => {
             <div className='deleteContainer'>
                 <div className='deleteWrapper'>
                     <HighlightOffIcon sx={{color:'red',fontSize:'40px',position:'absolute',right:'30px',top:'10px',cursor:'pointer'}} onClick={()=>setOpenDeletePart(false)}/>
-                    <Heading>Delete Employee</Heading>
+                    <Heading>Delete Client</Heading>
+                    <Heading style={{fontSize:'16px'}}>{data.name}</Heading>
                     <div><span className='delete' onClick={DeleteEmployee}>Delete</span> <span onClick={()=>setOpenDeletePart(false)}>Cancel</span></div>
                 </div>
             </div>

@@ -5,6 +5,9 @@ import axios from 'axios'
 import { Status } from './Status'
 import Loader from '../loder/loder'
 import { TextArea } from '../styledComponents/RegisterNewClient'
+import {HOST_NAME} from '../AWS_server_IP'
+
+
 
 export const MakeEntry = () => {
 
@@ -25,7 +28,7 @@ export const MakeEntry = () => {
     const submitData = async()=>{
          setShoLoader(true)
         const data = {ClientId:clientId , City:city, CheckIn:checkIn,CheckOut:checkOut,Days:days,Nights:nights,Remark:remark , BookingDate:BookingDate}
-        const res = await axios.put('https://maxis-holiday.herokuapp.com/client/update-client',{usingHolidayPackage:data ,clientId})
+        const res = await axios.put(`${HOST_NAME}/client/update-client`,{usingHolidayPackage:data ,clientId})
         setMessage(res.data)
         if(res.status==202){
             setSTATUS('fail')
