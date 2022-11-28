@@ -48,6 +48,7 @@ export const UpdateClient = ({setOpeUpdatelPart , data}) => {
     const [phone,setPhone] = useState(data.phone)
     const [address,setAddress] = useState(data.address)
     const [netAmount,setNetAmount] = useState(data.netAmount)
+    const [paidAmount,setPaidAmount] = useState(data.paidAmount)
     const [state,setState] = useState(data.state)
     const [city,setCity] = useState(data.city)
     const [DMA,setDMA] = useState(0)
@@ -78,7 +79,7 @@ export const UpdateClient = ({setOpeUpdatelPart , data}) => {
 
     const Update = async()=>{
       setShoLoader(true)
-        const res  = await axios.put(`${HOST_NAME}/client/update-client`,{clientId:data.clientId, name,email,gender,phone,address,netAmount,state,city,DMA,spouseName:spouse,spouseDOB,DOB,marriageAnniversaryDate:MAD,fathersName,mothersName,firstChildName,firstChildDOB,secondChildName,secondChildDOB,thirdChildName,thirdChildDOB,remark});
+        const res  = await axios.put(`${HOST_NAME}/client/update-client`,{clientId:data.clientId, name,email,gender,phone,address,netAmount,paidAmount,state,city,DMA,spouseName:spouse,spouseDOB,DOB,marriageAnniversaryDate:MAD,fathersName,mothersName,firstChildName,firstChildDOB,secondChildName,secondChildDOB,thirdChildName,thirdChildDOB,remark});
 
         setMessage(res.data)
         if(res.status==202){
@@ -196,6 +197,7 @@ export const UpdateClient = ({setOpeUpdatelPart , data}) => {
                   <ElementWrapper><Title style={{color:'gray'}}>Gender*</Title><Input required placeholder={data.gender} onChange={(e)=>setGender(e.target.value)}/></ElementWrapper>
                   <ElementWrapper><Title style={{color:'gray'}}>Address*</Title><TextArea required placeholder={data.address} onChange={(e)=>setAddress(e.target.value)}/></ElementWrapper>
                   <ElementWrapper><Title style={{color:'gray'}}>Net Amount*</Title><Input required placeholder='Enter Net Amount' onChange={(e)=>setNetAmount(e.target.value)}/></ElementWrapper>
+                  <ElementWrapper><Title style={{color:'gray'}}>Paid Amount*</Title><Input required placeholder='Enter Paid Amount' onChange={(e)=>setPaidAmount(e.target.value)}/></ElementWrapper>
                   <ElementWrapper><Title style={{color:'gray'}}>State*</Title><Input required placeholder='Enter State' onChange={(e)=>setState(e.target.value)}/></ElementWrapper>
                   <ElementWrapper><Title style={{color:'gray'}}>City*</Title><Input required placeholder='Enter City' onChange={(e)=>setCity(e.target.value)}/></ElementWrapper>
                   <ElementWrapper><Title style={{color:'gray'}}>Enter New Paid Membership Amount</Title><Input required placeholder='Enter Paid Amount' onChange={(e)=>setDMA(e.target.value)}/></ElementWrapper>
