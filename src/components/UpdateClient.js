@@ -264,8 +264,8 @@ export const UpdateClient = ({setOpeUpdatelPart , data}) => {
                 <>
                 <Heading>Update  Days/Nights</Heading>
                 <UpdateContainer>
-                    <ElementWrapper><Title style={{color:'gray'}}>Enter No. of Days</Title><Input required placeholder='Enter No. of Days' type={'number'} onChange={(e)=>setNoOfDays(e.target.value)}/></ElementWrapper>
-                    <ElementWrapper><Title style={{color:'gray'}}>Enter No. of Nights</Title><Input required placeholder='Enter No. of Nights' type={'number'} onChange={(e)=>setNoOfNights(e.target.value)}/></ElementWrapper>
+                    <ElementWrapper><Title style={{color:'gray'}}>Enter No. of Days</Title><Input required placeholder={data.totalAllowedDays} type={'number'} onChange={(e)=>setNoOfDays(e.target.value)}/></ElementWrapper>
+                    <ElementWrapper><Title style={{color:'gray'}}>Enter No. of Nights</Title><Input required placeholder={data.totalAllowedNights} type={'number'} onChange={(e)=>setNoOfNights(e.target.value)}/></ElementWrapper>
                 </UpdateContainer>
               <Button onClick={UpgradeDays_Nights}>{showLoader ? <Loader/>  :  "Update"}</Button>
                 </>
