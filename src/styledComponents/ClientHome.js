@@ -43,7 +43,8 @@ color:${(props)=> props.color ? 'green' : 'white'}
 `
 export const Title = styled.div`
 font-size:18px;
-color:#fbb03b
+color:#fbb03b;
+min-width: max-content;
 
 `
 

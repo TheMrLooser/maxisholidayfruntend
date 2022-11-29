@@ -196,24 +196,24 @@ export const UpdateClient = ({setOpeUpdatelPart , data}) => {
                   <ElementWrapper><Title style={{color:'gray'}}>Phone*</Title><Input required placeholder={data.phone} onChange={(e)=>setPhone(e.target.value)}/></ElementWrapper>
                   <ElementWrapper><Title style={{color:'gray'}}>Gender*</Title><Input required placeholder={data.gender} onChange={(e)=>setGender(e.target.value)}/></ElementWrapper>
                   <ElementWrapper><Title style={{color:'gray'}}>Address*</Title><TextArea required placeholder={data.address} onChange={(e)=>setAddress(e.target.value)}/></ElementWrapper>
-                  <ElementWrapper><Title style={{color:'gray'}}>Net Amount*</Title><Input required placeholder='Enter Net Amount' onChange={(e)=>setNetAmount(e.target.value)}/></ElementWrapper>
-                  <ElementWrapper><Title style={{color:'gray'}}>Paid Amount*</Title><Input required placeholder='Enter Paid Amount' onChange={(e)=>setPaidAmount(e.target.value)}/></ElementWrapper>
-                  <ElementWrapper><Title style={{color:'gray'}}>State*</Title><Input required placeholder='Enter State' onChange={(e)=>setState(e.target.value)}/></ElementWrapper>
-                  <ElementWrapper><Title style={{color:'gray'}}>City*</Title><Input required placeholder='Enter City' onChange={(e)=>setCity(e.target.value)}/></ElementWrapper>
+                  <ElementWrapper><Title style={{color:'gray'}}>Net Amount*</Title><Input required placeholder={data.netAmount} onChange={(e)=>setNetAmount(e.target.value)}/></ElementWrapper>
+                  <ElementWrapper><Title style={{color:'gray'}}>Paid Amount*</Title><Input required placeholder={data.paidAmount} onChange={(e)=>setPaidAmount(e.target.value)}/></ElementWrapper>
+                  <ElementWrapper><Title style={{color:'gray'}}>State*</Title><Input required placeholder={data.state} onChange={(e)=>setState(e.target.value)}/></ElementWrapper>
+                  <ElementWrapper><Title style={{color:'gray'}}>City*</Title><Input required placeholder={data.city} onChange={(e)=>setCity(e.target.value)}/></ElementWrapper>
                   <ElementWrapper><Title style={{color:'gray'}}>Enter New Paid Membership Amount</Title><Input required placeholder='Enter Paid Amount' onChange={(e)=>setDMA(e.target.value)}/></ElementWrapper>
                   <ElementWrapper><Title style={{color:'gray'}}>DOB*</Title><Input type={'date'}  placeholder='Enter DOB' onChange={(e)=>setDOB(e.target.value)}/></ElementWrapper>
-                  <ElementWrapper><Title style={{color:'gray'}}>Father's Name*</Title><Input  placeholder='Enter Fathers Name' onChange={(e)=>setFathersName(e.target.value)}/></ElementWrapper>
-                  <ElementWrapper><Title style={{color:'gray'}}>Mothers's Name*</Title><Input  placeholder='Enter Mothers Name' onChange={(e)=>setMothersName(e.target.value)}/></ElementWrapper>
-                  <ElementWrapper><Title style={{color:'gray'}}>Spouse Name</Title><Input   placeholder='Enter Spouse Name' onChange={(e)=>setSpouseName(e.target.value)}/></ElementWrapper>
-                  <ElementWrapper><Title style={{color:'gray'}}>Spouse DOB</Title><Input  type={'date'} placeholder='Enter Spouse DOB' onChange={(e)=>setSpouseDOB(e.target.value)}/></ElementWrapper>
-                  <ElementWrapper><Title style={{color:'gray'}}>Marriage Anniversary Date</Title><Input type={'date'}  placeholder='Enter Marriage Anniversary Date' onChange={(e)=>setMAD(e.target.value)}/></ElementWrapper>
-                  <ElementWrapper><Title style={{color:'gray'}}>First Child Name</Title><Input   placeholder='Enter First Child Name' onChange={(e)=>setFirstChildName(e.target.value)}/></ElementWrapper>
-                  <ElementWrapper><Title style={{color:'gray'}}>First Child DOB</Title><Input  type={'date'} placeholder='Enter First Child DOB' onChange={(e)=>setFirstChildDOB(e.target.value)}/></ElementWrapper>
-                  <ElementWrapper><Title style={{color:'gray'}}>Second Child Name</Title><Input   placeholder='Enter Second Child Name' onChange={(e)=>setSecondChildName(e.target.value)}/></ElementWrapper>
-                  <ElementWrapper><Title style={{color:'gray'}}>Second Child DOB</Title><Input  type={'date'} placeholder='Enter Second Child DOB' onChange={(e)=>setSecondChildDOB(e.target.value)}/></ElementWrapper>
-                  <ElementWrapper><Title style={{color:'gray'}}>Third Child Name</Title><Input   placeholder='Enter Third Child Name' onChange={(e)=>setThirdChildName(e.target.value)}/></ElementWrapper>
-                  <ElementWrapper><Title style={{color:'gray'}}>Third Child DOB</Title><Input type={'date'}  placeholder='Enter Third Child DOB' onChange={(e)=>setThirdChildDOB(e.target.value)}/></ElementWrapper>
-                  <ElementWrapper><Title style={{color:'gray'}}>Remark</Title><TextArea   placeholder='Enter Remark' onChange={(e)=>setRemark(e.target.value)}/></ElementWrapper>
+                  <ElementWrapper><Title style={{color:'gray'}}>Father's Name*</Title><Input  placeholder={data.fathersName} onChange={(e)=>setFathersName(e.target.value)}/></ElementWrapper>
+                  <ElementWrapper><Title style={{color:'gray'}}>Mothers's Name*</Title><Input  placeholder={data.mothersName} onChange={(e)=>setMothersName(e.target.value)}/></ElementWrapper>
+                  <ElementWrapper><Title style={{color:'gray'}}>Spouse Name</Title><Input   placeholder={data.spouseName} onChange={(e)=>setSpouseName(e.target.value)}/></ElementWrapper>
+                  <ElementWrapper><Title style={{color:'gray'}}>Spouse DOB</Title><Input  type={'date'} placeholder={data.spouseDOB} onChange={(e)=>setSpouseDOB(e.target.value)}/></ElementWrapper>
+                  <ElementWrapper><Title style={{color:'gray'}}>Marriage Anniversary Date</Title><Input type={'date'}  placeholder={data.marriageAnniversaryDate} onChange={(e)=>setMAD(e.target.value)}/></ElementWrapper>
+                  <ElementWrapper><Title style={{color:'gray'}}>First Child Name</Title><Input   placeholder={data.firstChildName} onChange={(e)=>setFirstChildName(e.target.value)}/></ElementWrapper>
+                  <ElementWrapper><Title style={{color:'gray'}}>First Child DOB</Title><Input  type={'date'} placeholder={data.firstChildDOB} onChange={(e)=>setFirstChildDOB(e.target.value)}/></ElementWrapper>
+                  <ElementWrapper><Title style={{color:'gray'}}>Second Child Name</Title><Input   placeholder={data.secondChildName} onChange={(e)=>setSecondChildName(e.target.value)}/></ElementWrapper>
+                  <ElementWrapper><Title style={{color:'gray'}}>Second Child DOB</Title><Input  type={'date'} placeholder={data.secondChildDOB} onChange={(e)=>setSecondChildDOB(e.target.value)}/></ElementWrapper>
+                  <ElementWrapper><Title style={{color:'gray'}}>Third Child Name</Title><Input   placeholder={data.thirdChildName} onChange={(e)=>setThirdChildName(e.target.value)}/></ElementWrapper>
+                  <ElementWrapper><Title style={{color:'gray'}}>Third Child DOB</Title><Input type={'date'}  placeholder={data.thirdChildDOB} onChange={(e)=>setThirdChildDOB(e.target.value)}/></ElementWrapper>
+                  <ElementWrapper><Title style={{color:'gray'}}>Remark</Title><TextArea   placeholder={data.remark} onChange={(e)=>setRemark(e.target.value)}/></ElementWrapper>
                   
               </UpdateContainer>
               <Button onClick={Update}>{showLoader ? <Loader/> : "Update"}</Button>
