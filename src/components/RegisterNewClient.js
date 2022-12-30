@@ -103,9 +103,7 @@ export const RegisterNewClient = () => {
 
                 const [Data,setData] = useState([]);
                 const [getState,setGetState] = useState([])
-                // const [salectState,setSalectState] = useState()
                 const [getCity,setGetCity] = useState([])
-                // const [salectCity,setSalectCity] = useState()
                 useEffect(()=>{
                     const getContryState_city = async ()=>{
                         var res = await axios.get(`${HOST_NAME}/api/countries`);

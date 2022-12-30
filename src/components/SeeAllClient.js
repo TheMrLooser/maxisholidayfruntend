@@ -115,7 +115,7 @@ export const SeeAllClient = () => {
             {openDownloadPart ? <DownloadInvoice data={data} setDownloadPart={setDownloadPart}/> : null}
 
             { openDeletePart ?
-            <div className='deleteContainer'>
+            <div className='deleteContainer'> 
                 <div className='deleteWrapper'>
                     <HighlightOffIcon sx={{color:'red',fontSize:'40px',position:'absolute',right:'30px',top:'10px',cursor:'pointer'}} onClick={()=>setOpenDeletePart(false)}/>
                     <Heading>Delete Client</Heading>

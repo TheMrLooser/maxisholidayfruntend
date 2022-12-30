@@ -45,7 +45,7 @@ export const DownloadInvoice = ({data , setDownloadPart}) => {
                         <ElementWrapper><Title>Paid Ammount :</Title> <Element>{data.paidAmount}</Element></ElementWrapper>
                         <ElementWrapper><Title>AMC :</Title> <Element>{data.AMC}</Element></ElementWrapper>
              
-                    </LeftDetailContainer>
+                    </LeftDetailContainer> 
                     <RightDetailContainer>
                         <ElementWrapper><Title>Membership Type :</Title> <Element>{data.membershipType}</Element></ElementWrapper>
                         <ElementWrapper><Title>Total Days :</Title> <Element>{data.totalAllowedDays}</Element></ElementWrapper>

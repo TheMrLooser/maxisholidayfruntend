@@ -57,6 +57,7 @@ export const ClientDetail = ({data}) => {
                     <ElementWrapper><Title>Membership Amount :</Title><Element>{user.netAmount}</Element></ElementWrapper>
                     <ElementWrapper><Title>Paid Amount :</Title><Element style={{color:'red'}}>{user.paidAmount}</Element></ElementWrapper>
                     <ElementWrapper><Title>Balance Amount :</Title><Element style={{color:'green'}}>{user.balanceAmount}</Element></ElementWrapper>
+                    <ElementWrapper><Title>Remark :</Title><Element>{user.remark}</Element></ElementWrapper>
                 </BodyWrapper>
             </BodyContainer>
             </BodyContainer>
